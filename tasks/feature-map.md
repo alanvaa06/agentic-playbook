@@ -23,7 +23,7 @@ _(No scan has been run yet. Invoke the Feature Tracker agent to populate this se
 
 ---
 
-## Notebooks (`notebooks/`)
+## Secondary Sources (`notebooks/`, `scripts/`, `examples/`)
 
 _(No scan has been run yet.)_
 
