@@ -123,7 +123,6 @@ agentic-standards/
 │       └── product/                        PRD templates
 ├── docs/                                   Project documentation
 │   ├── AGENTS.md                           Behavioral orchestration protocol
-│   ├── CLAUDE.md                           Claude Code project instructions
 │   └── CONTRIBUTING.md                     How to add skills, agents, and rules
 ├── tasks/                                  AI working memory
 │   ├── todo.md                             Canonical task tracker
@@ -153,10 +152,6 @@ We provide setup scripts that symlink `resources/` into Cursor's expected `.curs
 | Windows | `powershell -ExecutionPolicy Bypass -File scripts\setup_cursor.ps1` |
 
 This enables automatic rule enforcement and `@` mention discovery.
-
-### Claude Code
-
-The repository includes a `CLAUDE.md` file at the root. Claude Code automatically reads this file as project-level instructions, applying the same behavioral orchestration protocol (planning, verification, self-correction) without any additional setup.
 
 ---
 
