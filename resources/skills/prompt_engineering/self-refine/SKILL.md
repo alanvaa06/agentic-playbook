@@ -16,7 +16,7 @@ Self-Refine uses a **single LLM** to iteratively improve its own output through 
 - Any single-output task where "generate once" is insufficient and iterative polish adds value
 
 ❌ **WHEN NOT to use it:**
-- Tasks requiring factual verification against external sources (use `.cursor/skills/cove/SKILL.md` instead)
+- Tasks requiring factual verification against external sources (use `resources/skills/prompt_engineering/cove/SKILL.md` instead)
 - Multi-agent collaborative workflows (use CrewAI or AutoGen)
 - RAG pipelines where the problem is retrieval quality, not generation quality (use CRAG)
 - Tasks where the first output is already high quality and iteration adds no value (simple lookups, data formatting)

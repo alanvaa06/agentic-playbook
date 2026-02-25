@@ -12,7 +12,7 @@ Create detailed Product Requirements Documents for financial research pipelines 
 
 ## The Job
 
-1. **Read `.cursor/skills/financial-rag.md`** to understand the current pipeline architecture
+1. **Read `resources/skills/rag_and_retrieval/financial-rag.md`** to understand the current pipeline architecture
 2. **Read `tasks/todo.md`** to understand what has already been built
 3. Receive a feature or research pipeline description from the user
 4. Ask 3-5 essential clarifying questions (with lettered options)

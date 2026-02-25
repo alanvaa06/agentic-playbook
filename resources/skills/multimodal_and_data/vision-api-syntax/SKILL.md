@@ -16,7 +16,7 @@ WHEN to use it:
 - Any task where the input is an image file, not a PDF (for PDFs, use the `multimodal-parsing` skill instead)
 
 WHEN NOT to use it:
-- When the input is a PDF document (use `.cursor/skills/multimodal-parsing/SKILL.md` instead)
+- When the input is a PDF document (use `resources/skills/multimodal_and_data/multimodal-parsing/SKILL.md` instead)
 - When the image is embedded in a webpage and can be scraped as text/HTML
 - When OCR tools (Tesseract) would suffice for simple text-in-image extraction
 - When using multimodal models via LlamaIndex or LangChain abstractions (they handle encoding internally)

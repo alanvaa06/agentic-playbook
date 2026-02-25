@@ -10,7 +10,7 @@ Any new Retrieval-Augmented Generation pipeline MUST include an evaluation compo
 
 ## Requirements
 
-1. **Generate a synthetic test set** from the source documents using the pattern in `.cursor/skills/synthetic-data/SKILL.md`. Default to `gemini-2.5-flash` for question generation.
+1. **Generate a synthetic test set** from the source documents using the pattern in `resources/skills/multimodal_and_data/synthetic-data/SKILL.md`. Default to `gemini-2.5-flash` for question generation.
 2. **Measure at least two metrics:**
    - **Context Relevancy:** Did we retrieve the right chunks for the query?
    - **Faithfulness:** Is the generated answer grounded in the retrieved context, or is it hallucinated?
@@ -45,5 +45,5 @@ If scores fall below these thresholds, review chunking strategy, embedding model
 
 ## Skill References
 
-- `.cursor/skills/synthetic-data/SKILL.md` for test set generation
-- `.cursor/skills/crag/SKILL.md` if retrieval quality is unreliable and web fallback is needed
+- `resources/skills/multimodal_and_data/synthetic-data/SKILL.md` for test set generation
+- `resources/skills/rag_and_retrieval/crag/SKILL.md` if retrieval quality is unreliable and web fallback is needed

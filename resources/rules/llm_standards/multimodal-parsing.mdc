@@ -13,7 +13,7 @@ When processing financial PDFs (SEC 10-K/10-Q filings, earnings reports) that co
 | Document Content | Parser to Use |
 |-----------------|---------------|
 | Text and simple tables only | `LlamaParse(result_type="markdown")` or `SimpleDirectoryReader` |
-| Charts, graphs, or embedded images | Claude 3.5 Sonnet via direct API (see `.cursor/skills/vision-api-syntax/SKILL.md`) |
+| Charts, graphs, or embedded images | Claude 3.5 Sonnet via direct API (see `resources/skills/multimodal_and_data/vision-api-syntax/SKILL.md`) |
 | Unknown / mixed content | `LlamaParse` with multimodal mode enabled |
 
 ## Avoid These for Visual Content
@@ -28,5 +28,5 @@ Use **Claude 3.5 Sonnet** (`claude-3-5-sonnet-20241022`). Based on benchmarks in
 
 ## Skill References
 
-- `.cursor/skills/vision-api-syntax/SKILL.md` for base64 encoding and Anthropic message structure
-- `.cursor/skills/multimodal-parsing/SKILL.md` for LlamaParse Premium and Anthropic PDF API patterns
+- `resources/skills/multimodal_and_data/vision-api-syntax/SKILL.md` for base64 encoding and Anthropic message structure
+- `resources/skills/multimodal_and_data/multimodal-parsing/SKILL.md` for LlamaParse Premium and Anthropic PDF API patterns
