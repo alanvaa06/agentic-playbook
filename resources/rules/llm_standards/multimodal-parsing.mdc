@@ -1,0 +1,32 @@
+---
+description: Enforces Claude 3.5 Sonnet or LlamaParse multimodal mode for parsing financial PDFs containing charts, graphs, or complex tables.
+globs: **/*parse*.py, **/*vision*.py, **/*loader*.py, **/*pdf*.py
+alwaysApply: false
+---
+
+# Multimodal Document Parsing
+
+When processing financial PDFs (SEC 10-K/10-Q filings, earnings reports) that contain charts, graphs, or complex visual tables, standard text parsers destroy critical data. Use vision-capable models instead.
+
+## Decision Logic
+
+| Document Content | Parser to Use |
+|-----------------|---------------|
+| Text and simple tables only | `LlamaParse(result_type="markdown")` or `SimpleDirectoryReader` |
+| Charts, graphs, or embedded images | Claude 3.5 Sonnet via direct API (see `.cursor/skills/vision-api-syntax/SKILL.md`) |
+| Unknown / mixed content | `LlamaParse` with multimodal mode enabled |
+
+## Avoid These for Visual Content
+
+- `PyPDFLoader` (text-only, destroys all visual data)
+- `SimpleDirectoryReader` without a custom `file_extractor`
+- `pdfplumber` or `PyMuPDF` for chart extraction (designed for text/table grids, not visual reasoning)
+
+## Preferred Model for Chart Extraction
+
+Use **Claude 3.5 Sonnet** (`claude-3-5-sonnet-20241022`). Based on benchmarks in this project, it outperformed GPT-4o and Claude 3 Opus on complex financial chart data extraction.
+
+## Skill References
+
+- `.cursor/skills/vision-api-syntax/SKILL.md` for base64 encoding and Anthropic message structure
+- `.cursor/skills/multimodal-parsing/SKILL.md` for LlamaParse Premium and Anthropic PDF API patterns

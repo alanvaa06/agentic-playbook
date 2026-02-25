@@ -1,0 +1,26 @@
+---
+description: Robust Python Part II — enums, dataclasses, classes, protocols
+alwaysApply: false
+---
+# Robust Python: Defining Your Own Types
+
+## Enums
+- Use `enum.Enum` and `enum.auto()`. No magic numbers or raw strings for categories.
+- Style: `class MyEnum(Enum):` with UPPERCASE member names.
+- **Verification**: Compare an enum member to a raw value to confirm type-safety (or strict-check behavior).
+
+## Data classes
+- Use `@dataclass`. Prefer `frozen=True` for immutability.
+- Type-hint all fields. Use `field(default_factory=...)` for mutable defaults (never mutable default literals).
+- **Verification**: Instantiate and print `repr()` to confirm auto-generated representation.
+
+## Classes
+- Full encapsulation. Proper `__init__`. Use `__str__`, `__eq__` and other dunders as needed.
+- Enforce invariants: the class keeps its data in a valid state.
+- **Verification**: Test that violates an invariant fails (class prevents it or raises).
+
+## Protocols and interfaces
+- Use `typing.Protocol` for structural subtyping. Avoid deep inheritance.
+- Use `@runtime_checkable` only when you need `isinstance` checks.
+- A class can satisfy a Protocol without inheriting from it (duck typing with safety).
+- **Verification**: Implement a class that matches a Protocol without inheriting it; pass it to a function that expects that Protocol.

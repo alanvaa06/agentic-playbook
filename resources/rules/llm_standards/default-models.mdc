@@ -1,0 +1,42 @@
+---
+description: Enforces Anthropic (Claude) or Google (Gemini) as default LLM providers instead of OpenAI across all Python code.
+globs: **/*.py, **/*.ipynb
+alwaysApply: true
+---
+
+# Default Model Selection
+
+When generating code that requires an LLM, ALWAYS default to Anthropic or Google Gemini. DO NOT use OpenAI models (`gpt-4o`, `gpt-4-turbo`, `gpt-3.5-turbo`) unless the user explicitly requests them.
+
+## Preferred Models
+
+| Use Case | Model | Provider |
+|----------|-------|----------|
+| Complex reasoning, coding, chart parsing | `claude-3-5-sonnet-20241022` | Anthropic |
+| High-volume, fast, synthetic data generation | `gemini-2.5-flash` | Google |
+
+## Framework-Specific Overrides
+
+| Framework | Default (avoid) | Required Override |
+|-----------|----------------|-------------------|
+| **LangChain / LangGraph** | `ChatOpenAI` | `from langchain_anthropic import ChatAnthropic` |
+| **LlamaIndex** | `from llama_index.llms.openai import OpenAI` | `from llama_index.llms.anthropic import Anthropic` |
+| **SmolAgents** | `LiteLLMModel("openai/gpt-4o")` | `LiteLLMModel("anthropic/claude-3-5-sonnet-latest")` |
+| **CrewAI** | `os.environ["OPENAI_MODEL_NAME"]` | Set `manager_llm=ChatAnthropic(model="claude-3-5-sonnet-20241022")` |
+| **AutoGen** | `config_list = [{"model": "gpt-4o"}]` | Configure with Anthropic-compatible endpoint or use LiteLLM proxy |
+
+## Example
+
+```python
+# BAD
+from langchain_openai import ChatOpenAI
+llm = ChatOpenAI(model="gpt-4o")
+
+# GOOD
+from langchain_anthropic import ChatAnthropic
+llm = ChatAnthropic(model="claude-3-5-sonnet-20241022")
+
+# GOOD (for high-volume tasks)
+from langchain_google_genai import ChatGoogleGenerativeAI
+llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
+```

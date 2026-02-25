@@ -1,0 +1,15 @@
+---
+description: Robust Python Part III — dependency injection and composition
+alwaysApply: false
+---
+# Robust Python: Extensible Python
+
+## Dependency injection
+- Pass dependencies (objects/services) into functions or constructors; do not instantiate them inside the consumer.
+- Use type hints to declare the interface of the injected dependency.
+- **Verification**: Pass two different implementations of the same dependency to the same consumer and confirm both work.
+
+## Composition
+- Prefer "Has-A" over "Is-A". Build complex behavior by combining small, focused objects.
+- Avoid god objects; delegate responsibilities to composed parts.
+- **Verification**: Swap a composed component and show that behavior changes as intended.

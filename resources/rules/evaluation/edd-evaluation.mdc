@@ -1,0 +1,40 @@
+---
+description: Enforces Evaluation-Driven Development (EDD) for agent and workflow implementations, requiring evaluation plans and test cases before coding.
+globs: **/*agent*.py, **/*workflow*.py, **/*pipeline*.py, Agents/**/*.py
+alwaysApply: false
+---
+
+# Evaluation-Driven Development (EDD)
+
+When implementing a new LLM agent or multi-step workflow, you MUST follow an evaluation-first approach inspired by TDD. Do not jump straight into implementation.
+
+## Required Steps (Before Writing Agent Code)
+
+### 1. Define Evaluation Plan
+Before writing any agent logic, answer these questions explicitly:
+- What is the agent's primary task and expected output?
+- What are the failure modes (hallucination, wrong tool selection, infinite loops, cost overruns)?
+- Which metrics will measure success (task completion rate, faithfulness, latency, cost)?
+
+### 2. Generate Test Cases
+Create at least 3 test cases covering:
+- **Happy path:** A straightforward query the agent should handle correctly
+- **Edge case:** A query that tests the agent's boundaries (ambiguous input, missing data, multi-step reasoning)
+- **Failure case:** A query designed to trigger a known failure mode (e.g., a question outside the agent's domain)
+
+Use the synthetic data generation skill (`.cursor/skills/synthetic-data/SKILL.md`) if the agent operates over documents.
+
+### 3. Implement the Agent
+Only after Steps 1 and 2 are documented, proceed with the implementation using the relevant `.cursor/skills/` file.
+
+### 4. Evaluate and Iterate
+Run the test cases against the implementation. Log results. If scores fall below thresholds, refine the agent before considering it complete.
+
+## Minimum Evaluation Metrics for Agents
+
+| Agent Type | Required Metrics |
+|------------|-----------------|
+| RAG Agent | Context Relevancy, Faithfulness (via DeepEval) |
+| Tool-Calling Agent | Tool Selection Accuracy, Task Completion Rate |
+| Multi-Agent System | Per-agent task completion, total token cost, convergence rounds |
+| Code Generation Agent | Executability, Correctness (via Self-Refine or LLM Judge) |
