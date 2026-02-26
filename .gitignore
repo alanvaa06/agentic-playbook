@@ -42,3 +42,6 @@ coverage.xml
 # Distribution
 *.tar.gz
 *.whl
+
+# Project management
+todo.md

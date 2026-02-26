@@ -18,7 +18,7 @@ CoVe reduces hallucinations by forcing the LLM to **verify its own claims before
 ❌ **WHEN NOT to use it:**
 - Creative writing or brainstorming tasks where factual accuracy is irrelevant
 - Low-latency real-time applications (CoVe requires 4 sequential LLM calls minimum)
-- When external retrieval (RAG/CRAG) already provides trusted context — use `resources/skills/rag_and_retrieval/crag/SKILL.md` instead
+- When external retrieval (RAG/CRAG) already provides trusted context — use `resources/skills/ai/retrieval/crag/SKILL.md` instead
 - Simple code generation tasks (use `resources/skills/prompt_engineering/self-refine/SKILL.md` instead)
 
 ## Pros vs Cons

@@ -22,7 +22,7 @@ Create at least 3 test cases covering:
 - **Edge case:** A query that tests the agent's boundaries (ambiguous input, missing data, multi-step reasoning)
 - **Failure case:** A query designed to trigger a known failure mode (e.g., a question outside the agent's domain)
 
-Use the synthetic data generation skill (`resources/skills/multimodal_and_data/synthetic-data/SKILL.md`) if the agent operates over documents.
+Use the synthetic data generation skill (`resources/skills/ai/data/synthetic-data/SKILL.md`) if the agent operates over documents.
 
 ### 3. Implement the Agent
 Only after Steps 1 and 2 are documented, proceed with the implementation using the relevant skill file under `resources/skills/`.

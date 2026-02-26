@@ -57,11 +57,17 @@ Agents are active personas that change how the AI *behaves*. Instead of just wri
 
 | Category | Agent | What It Does |
 |----------|-------|-------------|
-| **Reviewers** | `code-reviewer.md` | Static analysis, architecture audits, consistency enforcement |
-| **Reviewers** | `test-reporter.md` | Runs pytest + mypy, diagnoses failures, produces QA dashboards |
-| **Architects** | `agentic_rag_architect.md` | Guides RAG system design through a discovery questionnaire |
-| **Orchestrators** | `prompt_chainer.md` | Decomposes complex tasks into sequential, user-approved steps |
-| **Orchestrators** | `llm_judge.md` | Evaluates code against a strict 10-point rubric |
+| **Roles** | `qa_agent.md` | Static analysis, test execution, coverage reporting |
+| **Roles** | `frontend_agent.md` | React/UI component development and styling |
+| **Roles** | `backend_agent.md` | API development and dependency injection |
+| **Roles** | `database_agent.md` | Schema design and migrations |
+| **Roles** | `devops_agent.md` | Infrastructure, CI/CD, and containers |
+| **Roles** | `payment_agent.md` | Webhooks and transaction handling |
+| **Roles** | `security_agent.md` | Vulnerability scanning and secrets |
+| **Architects** | `agentic_ai_architect.md` | Designs AI systems (RAG, multi-agent, multimodal, financial, synthetic data) |
+| **Architects** | `fullstack_architect.md` | Blueprints full-stack web apps and delegates to role agents |
+| **Reviewers** | `llm_judge.md` | Evaluates code against a strict 10-point rubric |
+| **Reviewers** | `feature-tracker.md` | Maps codebase architecture and tracks PRD gaps |
 
 ### Skills (Vocabulary)
 
@@ -73,7 +79,8 @@ Skills are passive documentation files that teach the AI the syntax, patterns, a
 | **RAG & Retrieval** | `crag` (Corrective RAG), `llamaindex`, `financial-rag` |
 | **Multimodal & Data** | `multimodal-parsing`, `vision-api-syntax`, `synthetic-data` |
 | **Prompt Engineering** | `cove` (Chain-of-Verification), `self-refine` |
-| **Product** | `prd` (Product Requirements Documents) |
+| **Product** | `prd` (Product Requirements Documents), `peas` (Agent Design Documents) |
+| **QA** | `testing_pytest.md`, `testing_jest.md`, `static_analysis_mypy.md`, `linting_ruff.md` |
 
 ---
 
@@ -81,11 +88,12 @@ Skills are passive documentation files that teach the AI the syntax, patterns, a
 
 The three layers complement each other in a continuous quality loop:
 
-1. **`agentic_rag_architect`** asks discovery questions and proposes a CRAG architecture.
-2. The AI reads **`skills/rag_and_retrieval/crag/SKILL.md`** to generate the implementation.
-3. **`llm_judge`** evaluates the generated code against the skill's patterns and scores it.
-4. If the Judge finds issues, **`prompt_chainer`** breaks the fix into sequential steps.
-5. Throughout the process, **Rules** silently enforce security, model selection, and evaluation standards.
+1. A **PRD** or **PEAS Agent Design Document** defines what to build (product or AI specification).
+2. The **`fullstack_architect`** blueprints the web application and produces a delegation map for role agents.
+3. If the app includes an AI subsystem, **`agentic_ai_architect`** selects the right pattern (RAG, multi-agent, multimodal) and loads the matching skills.
+4. **Role agents** (backend, frontend, database, devops, qa) implement their portions following loaded skills.
+5. **`llm_judge`** evaluates the generated code against the skill's patterns and scores it.
+6. Throughout the process, **Rules** silently enforce security, model selection, and evaluation standards.
 
 ---
 
@@ -112,16 +120,19 @@ agentic-standards/
 │   │   ├── llm_standards/                  Model selection, multimodal routing
 │   │   └── evaluation/                     RAG eval, eval-driven development
 │   ├── agents/                             Workflow personas
-│   │   ├── reviewers/                      Code reviewer, test reporter
-│   │   ├── architects/                     RAG architect
-│   │   └── orchestrators/                  Prompt chainer, LLM judge
+│   │   ├── roles/                          Role-based agents (backend, frontend, qa, devops, etc.)
+│   │   ├── reviewers/                      LLM judge, feature tracker
+│   │   └── architects/                     Agentic AI architect, Full Stack architect
 │   └── skills/                             Framework templates
-│       ├── multi_agent_frameworks/         AutoGen, CrewAI, LangChain, etc.
-│       ├── rag_and_retrieval/              CRAG, LlamaIndex, Financial RAG
-│       ├── multimodal_and_data/            PDF parsing, Vision APIs, Synthetic data
+│       ├── ai/                             AI-domain skills
+│       │   ├── frameworks/                 AutoGen, CrewAI, LangChain, OpenAI, Anthropic, SmolAgents
+│       │   ├── retrieval/                  CRAG, LlamaIndex, Financial RAG
+│       │   └── data/                       PDF parsing, Vision APIs, Synthetic data
 │       ├── prompt_engineering/             CoVe, Self-Refine
-│       └── product/                        PRD templates
+│       ├── product/                        PRD templates, PEAS agent design
+│       └── qa/                             Pytest, Jest, Mypy, Ruff
 ├── docs/                                   Project documentation
+│   ├── BUILD_PLAYBOOK.md                   Step-by-step guide: what to build first and in what order
 │   ├── AGENTS.md                           Behavioral orchestration protocol
 │   └── CONTRIBUTING.md                     How to add skills, agents, and rules
 ├── tasks/                                  AI working memory
@@ -152,6 +163,12 @@ We provide setup scripts that symlink `resources/` into Cursor's expected `.curs
 | Windows | `powershell -ExecutionPolicy Bypass -File scripts\setup_cursor.ps1` |
 
 This enables automatic rule enforcement and `@` mention discovery.
+
+---
+
+## Where to Start
+
+Not sure how to use this playbook on a real project? Read **[docs/BUILD_PLAYBOOK.md](docs/BUILD_PLAYBOOK.md)** — the step-by-step guide that tells you which agent to invoke, in what order, and why.
 
 ---
 

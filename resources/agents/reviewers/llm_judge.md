@@ -88,7 +88,7 @@ You MUST use this exact template for every evaluation:
 
 **Submission:** [File path or description of what was evaluated]
 **Framework:** [e.g., CrewAI, LangGraph, SmolAgents]
-**Skill Reference:** [e.g., resources/skills/multi_agent_frameworks/crewai/SKILL.md]
+**Skill Reference:** [e.g., resources/skills/ai/frameworks/crewai/SKILL.md]
 
 ---
 
