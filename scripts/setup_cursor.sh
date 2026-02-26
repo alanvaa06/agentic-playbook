@@ -9,6 +9,7 @@
 #   1. Creates a .cursor/ directory at the repo root (if absent).
 #   2. Symlinks resources/rules/* into .cursor/rules/ (flat)
 #      so Cursor applies .mdc guardrails automatically.
+#      Optionally filtered by category via --rules.
 #   3. Symlinks resources/agents/ into .cursor/agents/
 #      so agents are discoverable via @mention.
 #   4. Symlinks resources/skills/ into .cursor/skills/
@@ -16,10 +17,26 @@
 #
 # Usage:
 #   cd <repo-root>
+#
+#   # Load all rule categories (default)
 #   bash scripts/setup_cursor.sh
+#
+#   # Load only specific rule categories (comma-separated)
+#   bash scripts/setup_cursor.sh --rules code_quality,security
+#
+# Available rule categories:
+#   code_quality, evaluation, llm_standards, security
 # ------------------------------------------------------------------
 
 set -euo pipefail
+
+RULE_FILTER=""
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --rules) RULE_FILTER="$2"; shift 2 ;;
+    *) echo "Unknown option: $1"; exit 1 ;;
+  esac
+done
 
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 CURSOR_DIR="$REPO_ROOT/.cursor"
@@ -28,13 +45,19 @@ echo "Setting up Cursor IDE integration..."
 
 mkdir -p "$CURSOR_DIR/rules"
 
-# Flatten all .mdc files from categorized subfolders into .cursor/rules/
-for mdc_file in "$REPO_ROOT"/resources/rules/**/*.mdc; do
-    if [ -f "$mdc_file" ]; then
-        filename=$(basename "$mdc_file")
-        ln -sf "$mdc_file" "$CURSOR_DIR/rules/$filename"
-        echo "  Linked rule: $filename"
+# Flatten .mdc files from categorized subfolders into .cursor/rules/
+# Respects --rules filter if provided; otherwise links all categories.
+for category_dir in "$REPO_ROOT"/resources/rules/*/; do
+    category=$(basename "$category_dir")
+    if [[ -n "$RULE_FILTER" ]] && [[ ",$RULE_FILTER," != *",$category,"* ]]; then
+        echo "  Skipping category: $category"
+        continue
     fi
+    for mdc_file in "$category_dir"*.mdc; do
+        [ -f "$mdc_file" ] || continue
+        ln -sf "$mdc_file" "$CURSOR_DIR/rules/$(basename "$mdc_file")"
+        echo "  Linked rule: $(basename "$mdc_file") [$category]"
+    done
 done
 
 # Symlink agents directory
