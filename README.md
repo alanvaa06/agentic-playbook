@@ -1,16 +1,16 @@
-# Agentic Standards
+# Agentic Playbook
 
-**A curated knowledge base of AI agent patterns, framework skills, and engineering standards for financial analysis and robust Python development.**
+**A curated knowledge base of AI agent patterns, framework skills, and engineering standards for building robust full-stack and AI-powered applications.**
 
-Building AI agents often leads to messy, inconsistent code — each developer reinventing patterns, hardcoding API keys, and defaulting to whatever LLM the tutorial used. This repository solves that by providing a **three-layered AI orchestration system** (Skills, Agents, and Rules) that any team member can reference, and that integrates seamlessly with AI-powered editors like Cursor.
+Building AI agents and full-stack applications often leads to messy, inconsistent code — each developer reinventing patterns, hardcoding API keys, and defaulting to whatever LLM the tutorial used. This repository solves that by providing a **three-layered AI orchestration system** (Skills, Agents, and Rules) that any team member can reference, and that integrates seamlessly with AI-powered editors like Cursor.
 
 ---
 
 ## Quick Start
 
 ```bash
-git clone https://github.com/<your-org>/agentic-standards.git
-cd agentic-standards
+git clone https://github.com/<your-org>/agentic-playbook.git
+cd agentic-playbook
 ```
 
 The `resources/` directory is immediately browsable — open any `SKILL.md` to learn a framework, or reference an agent persona in your AI chat.
@@ -73,14 +73,20 @@ Agents are active personas that change how the AI *behaves*. Instead of just wri
 
 Skills are passive documentation files that teach the AI the syntax, patterns, and pitfalls of specific frameworks. When you mention a framework, the AI reads the corresponding skill and generates tailored code.
 
-| Category | Skills |
-|----------|--------|
-| **Multi-Agent Frameworks** | `autogen`, `crewai`, `smolagents`, `langchain`, `anthropic`, `openai` |
-| **RAG & Retrieval** | `crag` (Corrective RAG), `llamaindex`, `financial-rag` |
-| **Multimodal & Data** | `multimodal-parsing`, `vision-api-syntax`, `synthetic-data` |
-| **Prompt Engineering** | `cove` (Chain-of-Verification), `self-refine` |
-| **Product** | `prd` (Product Requirements Documents), `peas` (Agent Design Documents) |
-| **QA** | `testing_pytest.md`, `testing_jest.md`, `static_analysis_mypy.md`, `linting_ruff.md` |
+| Category | Path | Skills |
+|----------|------|--------|
+| **AI Frameworks** | `skills/ai/frameworks/` | `langchain`, `autogen`, `crewai`, `smolagents`, `anthropic`, `openai` |
+| **RAG & Retrieval** | `skills/ai/retrieval/` | `crag` (Corrective RAG), `llamaindex`, `financial-rag` |
+| **Multimodal & Data** | `skills/ai/data/` | `multimodal-parsing`, `vision-api-syntax`, `synthetic-data` |
+| **Prompt Engineering** | `skills/prompt_engineering/` | `cove` (Chain-of-Verification), `self-refine`, `prompt_chaining` |
+| **Product** | `skills/product/` | `PRD` (Product Requirements Documents), `PEAS` (Agent Design Documents) |
+| **Backend** | `skills/backend/` | `fastapi_architecture`, `sql_postgres`, `supabase_rls` |
+| **Frontend** | `skills/frontend/` | `react_best_practices`, `tailwind_design_system`, `forms_validation`, `sanity_cms`, `framer_motion`, `react_three_fiber` |
+| **Database** | `skills/database/` | `migrations`, `vector_dbs` |
+| **DevOps** | `skills/devops/` | `docker_best_practices`, `github_actions` |
+| **Payments** | `skills/payments/` | `stripe`, `mercadopago`, `paypal` |
+| **Security** | `skills/security/` | `sast`, `secrets_scanning`, `dependency_audit` |
+| **QA** | `skills/qa/` | `testing_pytest`, `testing_jest`, `static_analysis_mypy`, `linting_ruff` |
 
 ---
 
@@ -112,7 +118,7 @@ This creates a **compound learning effect**: every mistake one developer's AI en
 ## Project Structure
 
 ```
-agentic-standards/
+agentic-playbook/
 ├── resources/                           The AI knowledge base
 │   ├── rules/                              Project-wide guardrails
 │   │   ├── code_quality/                   Type safety, agent behavior
@@ -128,8 +134,14 @@ agentic-standards/
 │       │   ├── frameworks/                 AutoGen, CrewAI, LangChain, OpenAI, Anthropic, SmolAgents
 │       │   ├── retrieval/                  CRAG, LlamaIndex, Financial RAG
 │       │   └── data/                       PDF parsing, Vision APIs, Synthetic data
-│       ├── prompt_engineering/             CoVe, Self-Refine
+│       ├── prompt_engineering/             CoVe, Self-Refine, Prompt Chaining
 │       ├── product/                        PRD templates, PEAS agent design
+│       ├── backend/                        FastAPI, SQL/Postgres, Supabase RLS
+│       ├── frontend/                       React, Tailwind, Sanity CMS, Framer Motion
+│       ├── database/                       Migrations, Vector DBs
+│       ├── devops/                         Docker, GitHub Actions
+│       ├── payments/                       Stripe, MercadoPago, PayPal
+│       ├── security/                       SAST, Secrets scanning, Dependency audit
 │       └── qa/                             Pytest, Jest, Mypy, Ruff
 ├── docs/                                   Project documentation
 │   ├── BUILD_PLAYBOOK.md                   Step-by-step guide: what to build first and in what order
@@ -141,8 +153,6 @@ agentic-standards/
 ├── scripts/                                Tooling
 │   ├── setup_cursor.sh                     Cursor integration (macOS/Linux)
 │   └── setup_cursor.ps1                    Cursor integration (Windows)
-├── src/                                    Production code
-├── tests/                                  Test suite
 ├── .gitignore                              Security-first ignore patterns
 └── README.md                               You are here
 ```
