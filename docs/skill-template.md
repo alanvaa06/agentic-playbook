@@ -19,7 +19,7 @@ When creating a new skill file:
 ```markdown
 # [Skill Name]
 
-**Domain:** [e.g., frontend, backend, database, integrations, devops]
+**Domain:** [e.g., frontend, backend, database, devops, payments, security, product, qa]
 **Loaded when:** [e.g., `react` detected in `package.json`]
 
 ---

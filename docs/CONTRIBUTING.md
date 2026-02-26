@@ -1,4 +1,4 @@
-# Contributing to Agentic Standards
+# Contributing to Agentic Playbook
 
 Thank you for investing your time in making our team's AI smarter. When you add a skill, every developer instantly gains access to a new framework — with consistent, high-quality patterns from day one.
 
@@ -42,11 +42,13 @@ Skills are organized by domain inside `resources/skills/`. Pick the category tha
 
 | Category | Path | Examples |
 |----------|------|----------|
+| Backend | `skills/backend/` | FastAPI, SQL Postgres, Supabase RLS |
+| Frontend | `skills/frontend/` | React, Tailwind, Sanity CMS, Framer Motion |
+| Database | `skills/database/` | Migrations, Vector DBs |
+| DevOps | `skills/devops/` | Docker, GitHub Actions |
+| Payments | `skills/payments/` | Stripe, MercadoPago, PayPal |
+| Security | `skills/security/` | SAST, Secrets scanning, Dependency audit |
 | QA | `skills/qa/` | Pytest, Jest, Mypy, Ruff |
-| Frontend | `skills/frontend/` | React, Sanity CMS |
-| Backend & Database | `skills/backend_and_database/` | FastAPI, Supabase RLS, pgvector, Pinecone |
-| Integrations | `skills/integrations/` | Stripe, PayPal |
-| DevOps | `skills/devops/` | Docker |
 
 If none of these categories fit, create a new one and explain why in your PR description.
 
@@ -146,7 +148,7 @@ Submit a PR following the [Pull Request Checklist](#pull-request-checklist) belo
 
 ## Technology-Specific Skills
 
-Technology-Specific Skills are different from AI-framework skills. They encode **code architecture standards, file conventions, and integration patterns** for the concrete tools in your stack (React components, FastAPI endpoints, Docker configurations). Agents load these at runtime via [Skill Routing](agent-template.md) after inspecting `package.json` / `requirements.txt`.
+Technology-Specific Skills are different from AI-framework skills. They encode **code architecture standards, file conventions, and integration patterns** for the concrete tools in your stack (React components, FastAPI endpoints, Docker configurations). Agents load these at runtime by inspecting `package.json` / `requirements.txt` and loading the matching skill from their own **Skill Registry (§7)**.
 
 ### How They Differ from AI & Architecture Skills
 
@@ -156,7 +158,7 @@ Technology-Specific Skills are different from AI-framework skills. They encode *
 | **Consumer** | Agents and LLMs reasoning about AI pipelines | Agents writing application code |
 | **`globs` frontmatter** | Rarely scoped | Always scoped to the relevant file extensions |
 | **Code examples** | LLM orchestration code | Real application code (routes, components, schemas) |
-| **Loaded by** | Manual or always-on | Skill Routing table in each agent |
+| **Loaded by** | Manual or always-on | Skill Registry (§7) in each relevant agent |
 
 ### Step 1 — Choose the Category
 
@@ -282,12 +284,16 @@ Pay special attention to:
 - [Common failure mode 2 for this technology]
 ````
 
-### Step 4 — Register in the Skill Routing Table
+### Step 4 — Register in the Agent Skill Registry
 
-Open `docs/agent-template.md` and add a row to the **Skill Routing** table in Step 3 of the Initialization Protocol so agents know when to load your new skill:
+Add a row to the **Skill Registry (§7)** of each agent that should load this new skill. Do not modify `docs/agent-template.md` — each agent maintains its own registry. For example:
+
+- A new backend skill belongs in `resources/agents/roles/backend_agent.md` §7
+- A new payment skill belongs in `resources/agents/roles/payment_agent.md` §7
+- A new security skill belongs in `resources/agents/roles/security_agent.md` §7
 
 ```markdown
-| If you detect `[dependency]` in `[package.json/requirements.txt]` | Load `resources/skills/[category]/[your-technology]/SKILL.md` |
+| `resources/skills/[category]/[your-technology].md` | [One-line description of what this skill teaches] |
 ```
 
 ### Step 5 — Open a Pull Request
@@ -308,7 +314,7 @@ Agents are organized by role inside `resources/agents/`. Pick the right sub-cate
 |----------|------|----------|
 | Roles | `agents/roles/` | QA agent, Backend agent, Frontend agent |
 | Reviewers | `agents/reviewers/` | LLM judge, Feature tracker |
-| Architects | `agents/architects/` | RAG architect |
+| Architects | `agents/architects/` | Agentic AI architect, Full Stack architect |
 
 Place your agent file in the appropriate category:
 
@@ -403,7 +409,7 @@ Before submitting your PR, verify the following:
 - [ ] **`globs` frontmatter is set:** The frontmatter scopes the skill to the correct file extensions.
 - [ ] **Project Structure section present:** The canonical folder layout for the technology is documented.
 - [ ] **Integration Points section present:** How this technology connects to the rest of the stack is described.
-- [ ] **Skill Routing table updated:** A row has been added to `docs/agent-template.md` so agents load this skill automatically.
+- [ ] **Skill Registry updated:** A row has been added to the relevant agent(s) in `resources/agents/roles/` or `resources/agents/architects/` so they load this skill automatically.
 - [ ] **Implementation template is production-ready:** Includes type annotations, error handling, and environment-based configuration.
 
 ---
