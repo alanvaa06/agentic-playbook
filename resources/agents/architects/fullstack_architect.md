@@ -36,13 +36,21 @@ If the project already has code, inspect:
 | `.env.example`        | Declared environment variables and services               |
 
 ### Step 4 — Load Relevant Skills
-Load **only** the skill files needed to make architecture decisions — not implementation skills (those are loaded by downstream agents).
+Load **only** the skill files needed to make architecture decisions — not full implementation skills (those are loaded by downstream agents). Each skill here informs the blueprint, API contract, or delegation map.
 
-| If you detect…                              | Load this skill file                                    |
-|---------------------------------------------|---------------------------------------------------------|
-| `supabase` in any manifest                  | `resources/skills/backend/supabase_rls.md`              |
-| `stripe` in any manifest                    | `resources/skills/payments/stripe.md`                   |
-| `@sanity/client` in `package.json`          | `resources/skills/frontend/sanity_cms.md`               |
+| If you detect…                                                       | Load this skill file                                        |
+|----------------------------------------------------------------------|-------------------------------------------------------------|
+| `fastapi` in `requirements.txt`                                      | `resources/skills/backend/fastapi_architecture.md`          |
+| `psycopg2`, `asyncpg`, or `psycopg` in `requirements.txt`           | `resources/skills/backend/sql_postgres.md`                  |
+| `supabase` in any manifest                                           | `resources/skills/backend/supabase_rls.md`                  |
+| `alembic` in `requirements.txt` or `prisma` in `package.json`       | `resources/skills/database/migrations.md`                   |
+| `pgvector`, `pinecone`, `chromadb`, `qdrant`, or `weaviate` in any manifest | `resources/skills/database/vector_dbs.md`          |
+| `stripe` in any manifest                                             | `resources/skills/payments/stripe.md`                       |
+| `paypalrestsdk` or `paypal-server-sdk` in any manifest               | `resources/skills/payments/paypal.md`                       |
+| `mercadopago` in any manifest                                        | `resources/skills/payments/mercadopago.md`                  |
+| `@sanity/client` in `package.json`                                   | `resources/skills/frontend/sanity_cms.md`                   |
+| `Dockerfile` or `docker-compose.yml` present                         | `resources/skills/devops/docker_best_practices.md`          |
+| `.github/workflows/` directory present                               | `resources/skills/devops/github_actions.md`                 |
 
 ### Step 5 — Declare Context Before Acting
 Before proposing any architecture, output:
@@ -316,13 +324,21 @@ If the user answered **7B or 7C** (AI subsystem), add:
 
 ## 7. Skill Registry
 
-| Skill File | Description |
-|------------|-------------|
-| `resources/skills/backend/supabase_rls.md` | Supabase Row-Level Security patterns (loaded when Supabase is in use) |
-| `resources/skills/payments/stripe.md` | Stripe integration patterns (loaded when payments = Stripe) |
-| `resources/skills/frontend/sanity_cms.md` | Sanity CMS headless content management (loaded for content sites) |
+Skills loaded by this architect inform the **blueprint, API contract, and delegation map**. Implementation-level skills (testing patterns, query optimization, animation, etc.) are loaded by downstream role agents, not here.
 
-> All other skills (React, FastAPI, Docker, Pytest, etc.) are loaded by downstream role agents, not by this architect.
+| Skill File | Informs | Loaded when |
+|------------|---------|-------------|
+| `resources/skills/backend/fastapi_architecture.md` | API contract structure, router layout, dependency injection patterns | `fastapi` in `requirements.txt` |
+| `resources/skills/backend/sql_postgres.md` | DB connection layer, async driver choice (asyncpg vs psycopg3), pool config | `psycopg2`, `asyncpg`, or `psycopg` in `requirements.txt` |
+| `resources/skills/backend/supabase_rls.md` | Auth model, RLS policy design, realtime architecture | `supabase` in any manifest |
+| `resources/skills/database/migrations.md` | Migration strategy in delegation map (Alembic vs Prisma) | `alembic` in `requirements.txt` or `prisma` in `package.json` |
+| `resources/skills/database/vector_dbs.md` | Vector storage selection, embedding dimensions, AI subsystem handoff | `pgvector`, `pinecone`, `chromadb`, `qdrant`, or `weaviate` in any manifest |
+| `resources/skills/payments/stripe.md` | Payment architecture, webhook endpoint contract | `stripe` in any manifest |
+| `resources/skills/payments/paypal.md` | PayPal order flow, IPN webhook contract | `paypalrestsdk` or `paypal-server-sdk` in any manifest |
+| `resources/skills/payments/mercadopago.md` | MercadoPago preference flow, IPN webhook contract | `mercadopago` in any manifest |
+| `resources/skills/frontend/sanity_cms.md` | CMS content model, GROQ query patterns, frontend data layer | `@sanity/client` in `package.json` |
+| `resources/skills/devops/docker_best_practices.md` | Container layout, multi-stage build strategy, service dependencies | `Dockerfile` or `docker-compose.yml` present |
+| `resources/skills/devops/github_actions.md` | CI/CD pipeline structure for DevOps Agent delegation | `.github/workflows/` present |
 
 ---
 
