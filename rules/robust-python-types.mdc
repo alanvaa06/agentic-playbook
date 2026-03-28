@@ -1,0 +1,33 @@
+---
+description: Robust Python Part I — types, annotations, and type checker config
+alwaysApply: false
+---
+# Robust Python: Annotating Your Code with Types
+
+## Readability and intent (no type hints yet)
+- PEP 8 compliant. Meaningful names that imply type (e.g. `user_count`, not `x`).
+- Robustness = communicating intent. Code must run without syntax errors.
+
+## Built-in types
+- Use explicit assignment to show type (e.g. `x = 5  # int`). Prefer `type()` in prints only when demonstrating.
+- Know mutable (list, dict) vs immutable (tuple, str) and how references work.
+
+## Type annotations (PEP 484)
+- **Mandatory**: type hints on function arguments and return values.
+  - `def greet(name: str) -> str:`
+- Annotate variables only when inference is ambiguous. Annotations = machine-verified docs.
+- **Verification**: Run `mypy`; fix any type mismatch errors.
+
+## Constraining types
+- Use `Optional[T]` (not `Union[T, None]`). Use `Union` and `Literal` where needed. Use `Any` sparingly.
+- Explicitly handle `None`: unwrap or check before use. Avoid `Any`; it weakens type checking.
+- **Verification**: Every `Optional` is checked/unwrapped before use.
+
+## Collections
+- Annotate inner types: `list[int]`, `dict[str, int]` (or `List`, `Dict` from `typing` on older Python). Never raw `list`/`dict` in annotations.
+- Prefer abstract types for parameters: `Iterable` or `Sequence` for read-only inputs.
+- **Verification**: Iteration matches the annotated element type.
+
+## Type checker config
+- Configure `mypy.ini` or `pyproject.toml` (e.g. `--disallow-untyped-defs`, `--no-implicit-optional`).
+- **Verification**: Changing a strictness flag should change mypy output as expected.

@@ -1,0 +1,25 @@
+---
+description: Robust Python Part IV — static analysis, pytest, hypothesis, mutation
+alwaysApply: false
+---
+# Robust Python: Building a Safety Net
+
+## Static analysis
+- Use linters (e.g. pylint, flake8) and formatters (e.g. black). Automate; don’t rely on manual style review.
+- Watch cyclomatic complexity and style consistency.
+- **Verification**: Run the linter on complex code and refactor until it passes.
+
+## Testing (pytest)
+- Use pytest. Write unit tests. Arrange–Act–Assert. Use fixtures for setup.
+- Test behavior and properties, not only single data points.
+- **Verification**: Run `pytest`; all tests pass and failures have clear messages.
+
+## Property-based testing (hypothesis)
+- Use Hypothesis. Define strategies (e.g. `st.integers()`, `st.lists()`) for generated data.
+- Aim to find edge cases (e.g. division by zero, empty lists) that examples miss.
+- **Verification**: Run a hypothesis test that exposes a bug (e.g. wrong handling of zero or empty input).
+
+## Mutation testing
+- Use mutmut or similar. Reason about mutant survival.
+- Focus: testing the tests — the suite should detect logic changes.
+- **Verification**: Introduce a small bug (mutate code); the test suite must fail.

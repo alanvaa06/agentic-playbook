@@ -10,6 +10,8 @@ This document governs how the agent thinks, plans, executes, and corrects itself
   1. What you are going to do.
   2. Which files you will create or modify.
   3. What the expected outcome is.
+- **Before creating any plan, every agent and subagent MUST read `context/memory.md`.**
+- **Planning is invalid unless `context/memory.md` has been read in the current session.**
 - Plans must be concise (bullet points, not essays).
 - If the task is trivial (single-file, < 5 lines changed), you may skip the plan and proceed directly.
 
@@ -22,7 +24,7 @@ This document governs how the agent thinks, plans, executes, and corrects itself
 
 ## 3. Self-Improvement Loop
 
-- Maintain a learning file at **`Context/tasks/self-correction.md`**.
+- Maintain a learning file at **`context/tasks/self-correction.md`**.
 - **Read** this file at the start of every new session to avoid repeating past mistakes.
 - **Append** to this file whenever you encounter:
   - An unexpected error (API rate limit, missing dependency, wrong argument).
@@ -58,18 +60,29 @@ This document governs how the agent thinks, plans, executes, and corrects itself
   2. **Diagnose** — read the traceback, identify the root cause.
   3. **Fix** — apply the minimal correct fix.
   4. **Verify** — re-run the failing test to confirm the fix.
-  5. **Document** — if the bug was non-obvious, log it in `Context/tasks/self-correction.md`.
+  5. **Document** — if the bug was non-obvious, log it in `context/tasks/self-correction.md`.
 - Do not ask the user for help unless you have exhausted all reasonable debugging avenues.
 
 ## 7. Task Management
 
-- Use **`Context/tasks/todo.md`** as the canonical task tracker for the active project.
+- Use **`context/tasks/todo.md`** as the canonical task tracker for the active project.
 - Before starting work, check the todo list for the next pending item.
 - Update task status as you progress: `pending` → `in_progress` → `done`.
 - If a task turns out to be unnecessary, mark it `skipped` with a one-line reason.
 - Add new tasks when you discover follow-up work during implementation.
 
-## 8. Core Principles
+## 8. Shared Memory Protocol (Project Context)
+
+- Maintain a shared project memory file at **`context/memory.md`** for project state, user preferences, and workflow status.
+- **Read** `context/memory.md` at the start of every session (after reading this file) and before drafting any plan.
+- **Update** `context/memory.md` whenever there is durable context worth carrying forward, including:
+  - Project-level decisions or constraints.
+  - User preferences (style, tooling, process).
+  - Current status, active focus, and important handoff notes.
+- Every agent and subagent MUST follow this memory protocol. No agent is exempt.
+- `AGENTS.md` is the authoritative execution policy: if an agent-specific instruction conflicts with memory workflow behavior, `AGENTS.md` takes precedence.
+
+## 9. Core Principles
 
 1. **Autonomy** — Complete as much as possible without user intervention. Ask only when genuinely blocked (missing credentials, ambiguous requirements).
 2. **Transparency** — Show your reasoning. When making a non-obvious decision, explain *why* in your response.
