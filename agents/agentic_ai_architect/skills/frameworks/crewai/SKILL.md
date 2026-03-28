@@ -143,7 +143,7 @@ result = crew.kickoff(inputs={
 - **No computation capability**: Agents cannot execute code. They reason about strategies but cannot compute actual returns, signals, or backtest results.
 
 ## 🚨 Self-Correction Mandate
-Throughout every step of implementing or running this framework, if you encounter any errors or unexpected behavior, **immediately** append an entry to `tasks/self-correction.md` detailing the failure and the attempted fix. Pay special attention to:
+Throughout every step of implementing or running this framework, if you encounter any errors or unexpected behavior, **immediately** append an entry to `context/self-correction.md` detailing the failure and the attempted fix. Pay special attention to:
 - Tokenizer mapping errors when using newer OpenAI models
 - Agents exceeding `max_iter` without producing useful output
 - Cost overruns from unexpected GPT-4 default usage (check `OPENAI_MODEL_NAME` env var)

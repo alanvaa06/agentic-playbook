@@ -146,7 +146,7 @@ print(final)
 - **Skipping Step 4:** Simply listing verified facts is not enough. The revision step must explicitly cross-check the baseline against the verified answers to detect and remove inconsistencies.
 
 ## 🚨 Self-Correction Mandate
-Throughout every step of implementing or running this pattern, if you encounter any errors or unexpected behavior, **immediately** append an entry to `tasks/self-correction.md` detailing the failure and the attempted fix. Pay special attention to:
+Throughout every step of implementing or running this pattern, if you encounter any errors or unexpected behavior, **immediately** append an entry to `context/self-correction.md` detailing the failure and the attempted fix. Pay special attention to:
 - The LLM failing to generate parseable verification questions in Step 2
 - The final response still containing a hallucination that was flagged in Step 3
 - Token usage exceeding expectations due to an excessive number of verification questions

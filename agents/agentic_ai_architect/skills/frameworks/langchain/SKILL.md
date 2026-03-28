@@ -100,7 +100,7 @@ For the full LangGraph pattern with `StateGraph`, `GraphState`, conditional edge
 - **Thread ID for memory**: When using `MemorySaver`, always pass a `thread_id` in the config; without it, conversation history is not persisted.
 
 ## 🚨 Self-Correction Mandate
-Throughout every step of implementing or running this framework, if you encounter any errors or unexpected behavior, **immediately** append an entry to `tasks/self-correction.md` detailing the failure and the attempted fix. Pay special attention to:
+Throughout every step of implementing or running this framework, if you encounter any errors or unexpected behavior, **immediately** append an entry to `context/self-correction.md` detailing the failure and the attempted fix. Pay special attention to:
 - Infinite loops in reflection/generate cycles (missing termination condition)
 - `GraphState` TypedDict missing required fields causing runtime KeyError
 - Reflection agent returning unchanged code across iterations

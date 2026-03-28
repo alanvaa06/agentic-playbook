@@ -207,7 +207,7 @@ coverage/
 
 ## Self-Correction Mandate
 
-If you encounter an unexpected build failure, a bloated image, a container running as root, or any pattern that required more than one attempt to get right, you MUST log the failure to `tasks/self-correction.md` before marking the task complete.
+If you encounter an unexpected build failure, a bloated image, a container running as root, or any pattern that required more than one attempt to get right, you MUST log the failure to `context/self-correction.md` before marking the task complete.
 
 Pay special attention to:
 - Cache invalidation surprises caused by instruction ordering.

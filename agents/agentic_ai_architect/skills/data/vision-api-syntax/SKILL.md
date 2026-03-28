@@ -179,7 +179,7 @@ messages = [
 - **Media type must match**: Set `media_type` to `"image/png"` for PNGs and `"image/jpeg"` for JPEGs. A mismatch may cause silent decoding errors.
 
 ## Self-Correction Mandate
-Throughout every step of implementing or running this pattern, if you encounter any errors or unexpected behavior, **immediately** append an entry to `tasks/self-correction.md` detailing the failure and the attempted fix. Pay special attention to:
+Throughout every step of implementing or running this pattern, if you encounter any errors or unexpected behavior, **immediately** append an entry to `context/self-correction.md` detailing the failure and the attempted fix. Pay special attention to:
 - API returning errors due to incorrect message structure (provider mismatch)
 - Model returning 404 (check for sunset — verify current model names before replacing)
 - Vision model hallucinating chart values that don't exist in the image

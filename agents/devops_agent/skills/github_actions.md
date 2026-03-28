@@ -260,7 +260,7 @@ jobs:
 
 ## Self-Correction Mandate
 
-If you encounter a failing workflow step, a leaked secret in logs, a missed cache hit, or any pattern that required more than one attempt to get right, you MUST log the failure to `tasks/self-correction.md` before marking the task complete.
+If you encounter a failing workflow step, a leaked secret in logs, a missed cache hit, or any pattern that required more than one attempt to get right, you MUST log the failure to `context/self-correction.md` before marking the task complete.
 
 Pay special attention to:
 - `needs` dependency chains that are missing or circular.

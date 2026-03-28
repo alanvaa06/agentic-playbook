@@ -40,13 +40,13 @@ flowchart TD
 
 Invoke `resources/skills/product/PRD/SKILL.md`.
 
-The PRD skill asks you discovery questions and produces a structured `tasks/prd-*.md` file that defines:
+The PRD skill asks you discovery questions and produces a structured `context/prd-*.md` file that defines:
 - What the application does and for whom
 - Core user stories and acceptance criteria
 - Out-of-scope boundaries
 - Success metrics
 
-**Output:** `tasks/prd-[project-name].md`
+**Output:** `context/prd-[project-name].md`
 
 ### Step 2 — Write the PEAS Document *(if the app includes an AI subsystem)*
 
@@ -58,15 +58,15 @@ The PEAS skill produces a structured Agent Design Document for each AI agent in 
 - **Actuators** — what actions the agent can take
 - **Sensors** — what inputs the agent receives
 
-**Output:** `tasks/agent-design-[agent-name].md`
+**Output:** `context/agent-design-[agent-name].md`
 
 > Write one PEAS document per distinct AI agent. For a system with a retrieval agent and a synthesis agent, write two PEAS documents before proceeding.
 
 ### Checkpoint
 
 Before moving to Phase 1, you must have:
-- [ ] A completed PRD in `tasks/`
-- [ ] A PEAS document in `tasks/` for each AI agent (if applicable)
+- [ ] A completed PRD in `context/`
+- [ ] A PEAS document in `context/` for each AI agent (if applicable)
 
 ---
 

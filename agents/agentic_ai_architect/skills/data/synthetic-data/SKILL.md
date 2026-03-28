@@ -192,7 +192,7 @@ The patterns above default to Gemini 2.5 Flash. To use a different LLM, replace 
 - **LangChain response format**: In LangChain, `chain.invoke()` returns a message object — access the text via `.content`. In LlamaIndex, `llm.complete()` returns a response that can be cast with `str()`. In pure Python with `google.generativeai`, use `.text`.
 
 ## 🚨 Self-Correction Mandate
-Throughout every step of implementing or running this pattern, if you encounter any errors or unexpected behavior, **immediately** append an entry to `tasks/self-correction.md` detailing the failure and the attempted fix. Pay special attention to:
+Throughout every step of implementing or running this pattern, if you encounter any errors or unexpected behavior, **immediately** append an entry to `context/self-correction.md` detailing the failure and the attempted fix. Pay special attention to:
 - Google model returning 404 (model sunset — verify before replacing)
 - LLM generating answers instead of questions (prompt template issue)
 - Empty or malformed `queries` dict after processing (regex or splitting failure)

@@ -15,8 +15,8 @@ You do NOT assume the technology stack. You derive it from the project's `requir
 Before reviewing, testing, or evaluating anything, execute the following steps in order:
 
 ### Step 1 — Read Behavioral Standards
-- Read `docs/AGENTS.md` and follow every directive it contains.
-- Read `tasks/self-correction.md` to absorb past lessons and avoid known mistakes. If a past entry relates to the files under review, apply that lesson proactively.
+- Read `AGENTS.md` and follow every directive it contains.
+- Read `context/self-correction.md` to absorb past lessons and avoid known mistakes. If a past entry relates to the files under review, apply that lesson proactively.
 - Read `.cursor/rules/` to load all active Cursor rules for this workspace.
 
 ### Step 2 — Detect the Technology Stack
@@ -77,8 +77,8 @@ Follow this lifecycle for every task:
 
 1. **Plan** — State what you are about to review, test, or evaluate.
 2. **Execute** — Perform the analysis using the mode-specific protocol from §5.
-3. **Verify** — Cross-check your findings against loaded skill files and `tasks/self-correction.md`.
-4. **Update** — Mark the relevant item in `tasks/todo.md` as `done`.
+3. **Verify** — Cross-check your findings against loaded skill files and `context/self-correction.md`.
+4. **Update** — Mark the relevant item in `context/todo.md` as `done`.
 
 ---
 
@@ -108,7 +108,7 @@ Systematically scan for these categories of defect:
 **Multi-Agent Consistency**
 - Ensure sub-agents receive self-contained prompts with no reliance on parent scope variables.
 - Verify that Agent A's output format matches Agent B's expected input.
-- Ensure all agents follow `docs/AGENTS.md`.
+- Ensure all agents follow `AGENTS.md`.
 
 ### Mode: Test Execution
 
@@ -123,10 +123,10 @@ Systematically scan for these categories of defect:
 - Note whether tests requiring external services are properly mocked.
 
 **Known-Issue Awareness**
-- Cross-reference failures against `tasks/self-correction.md`. Do NOT report a known, documented issue as a new failure — reference the existing entry instead.
+- Cross-reference failures against `context/self-correction.md`. Do NOT report a known, documented issue as a new failure — reference the existing entry instead.
 
 **Persistent Dashboard**
-- After every test run, overwrite `tasks/testing-status.md` with the latest results (timestamp, summary table, coverage gaps, open failures). This file always reflects the latest state.
+- After every test run, overwrite `context/testing-status.md` with the latest results (timestamp, summary table, coverage gaps, open failures). This file always reflects the latest state.
 
 ### Mode: Evaluation (Scoring)
 
@@ -168,9 +168,9 @@ Systematically scan for these categories of defect:
 
 ### How to self-correct
 1. **Diagnose** — State what was wrong with your analysis.
-2. **Consult** — Re-read the relevant skill file or `tasks/self-correction.md` entry.
+2. **Consult** — Re-read the relevant skill file or `context/self-correction.md` entry.
 3. **Fix** — Produce the corrected finding.
-4. **Log** — Append an entry to `tasks/self-correction.md` using the format in `docs/AGENTS.md §3`.
+4. **Log** — Append an entry to `context/self-correction.md` using the format in `AGENTS.md §3`.
 
 ### Circuit breaker
 - If you fail to resolve the same issue after **2 consecutive attempts**, STOP and ask the user for guidance.

@@ -76,7 +76,6 @@ agents/
 | **agentic_ai_architect** | Architect | 14 | LangChain, CrewAI, AutoGen, SmolAgents, OpenAI, Anthropic, LlamaIndex, CRAG, Financial RAG, multimodal parsing, vision APIs, synthetic data, vector DBs |
 | **fullstack_architect** | Architect | 0 | Blueprints apps and delegates to role agents (references their skills) |
 | **llm_judge** | Reviewer | 0 | Scores code against a 10-point rubric (dynamically loads relevant skills) |
-| **feature_tracker** | Reviewer | 0 | Maps codebase architecture and tracks PRD gaps |
 | **shared** | — | 5 | Prompt engineering (CoVe, Self-Refine, chaining), Product (PRD, PEAS) |
 
 ### Rules (Guardrails)
@@ -109,7 +108,7 @@ The agents and rules complement each other in a continuous quality loop:
 
 Our AI doesn't just write code — it learns. Every agent in this repository is mandated to:
 
-1. **Read** [`tasks/self-correction.md`](tasks/self-correction.md) at the start of every session.
+1. **Read** [`context/self-correction.md`](context/self-correction.md) at the start of every session.
 2. **Log** any unexpected errors, deprecations, or hallucinations with a structured entry.
 3. **Apply** past lessons proactively, avoiding known pitfalls before they happen.
 
@@ -150,8 +149,6 @@ agentic-playbook/
 │   │   └── fullstack_architect.md          References other agents' skills for blueprint decisions
 │   ├── llm_judge/
 │   │   └── llm_judge.md                   Strict code evaluator (10-point rubric)
-│   ├── feature_tracker/
-│   │   └── feature-tracker.md             Codebase mapping and PRD gap analysis
 │   └── shared/
 │       └── skills/                         Prompt engineering (CoVe, Self-Refine, chaining), Product (PRD, PEAS)
 ├── resources/
@@ -160,13 +157,13 @@ agentic-playbook/
 │       ├── security/                       API key management
 │       ├── llm_standards/                  Model selection, multimodal routing
 │       └── evaluation/                     RAG eval, eval-driven development
-├── docs/                                   Project documentation
-│   ├── BUILD_PLAYBOOK.md                   Step-by-step guide: what to build first and in what order
-│   ├── AGENTS.md                           Behavioral orchestration protocol
-│   └── CONTRIBUTING.md                     How to add skills, agents, and rules
-├── tasks/                                  AI working memory
+├── AGENTS.md                               Behavioral orchestration protocol (root-level)
+├── context/                                AI working memory
 │   ├── todo.md                             Canonical task tracker
 │   └── self-correction.md                  Learning database
+├── docs/                                   Project documentation
+│   ├── BUILD_PLAYBOOK.md                   Step-by-step guide: what to build first and in what order
+│   └── CONTRIBUTING.md                     How to add skills, agents, and rules
 ├── scripts/                                Tooling
 │   ├── setup_cursor.sh                     Cursor integration (macOS/Linux)
 │   └── setup_cursor.ps1                    Cursor integration (Windows)
