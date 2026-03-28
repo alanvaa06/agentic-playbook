@@ -136,7 +136,7 @@ usually get wrong? List at least 2-3 pitfalls.]
 
 **MANDATE:** If you encounter an unexpected error, a deprecation warning,
 or a hallucination while using this skill, you MUST log the error, the
-context, and the fix to `context/self-correction.md` before marking the
+context, and the fix to `Context/tasks/self-correction.md` before marking the
 task as complete.
 ````
 
@@ -276,7 +276,7 @@ mistakes an AI assistant is likely to repeat.]
 
 If you encounter an unexpected error, a deprecation warning, or a pattern
 that required more than one attempt to get right while using this skill,
-you MUST log the failure to `context/self-correction.md` before marking the
+you MUST log the failure to `Context/tasks/self-correction.md` before marking the
 task complete. Use the format defined in `AGENTS.md §3`.
 
 Pay special attention to:
@@ -333,12 +333,12 @@ Every agent must follow this template:
 | **Protocol** | The exact step-by-step workflow with `[STOP AND WAIT]` gates |
 | **Output Format** | Strict template the agent must use for responses |
 | **Escape Hatch** | Override command to bypass strict protocol when needed |
-| **Self-Correction Mandate** | Instruction to read and update `context/self-correction.md` |
+| **Self-Correction Mandate** | Instruction to read and update `Context/tasks/self-correction.md` |
 
 ### Key Requirements
 
-- Agents must read `context/self-correction.md` before starting work.
-- Agents must append to `context/self-correction.md` when they encounter non-obvious issues.
+- Agents must read `Context/tasks/self-correction.md` before starting work.
+- Agents must append to `Context/tasks/self-correction.md` when they encounter non-obvious issues.
 - Agents must follow the behavioral rules in [`AGENTS.md`](AGENTS.md).
 
 ---
@@ -399,7 +399,7 @@ Before submitting your PR, verify the following:
 - [ ] **Correct category:** The file is placed in the right sub-folder within `resources/`.
 - [ ] **No hardcoded keys:** No API keys, tokens, or credentials appear anywhere in the file.
 - [ ] **Common Pitfalls are genuine:** Each pitfall comes from real experience, not speculation.
-- [ ] **Self-Correction Mandate is present:** The file includes the mandate to log errors to `context/self-correction.md`.
+- [ ] **Self-Correction Mandate is present:** The file includes the mandate to log errors to `Context/tasks/self-correction.md`.
 - [ ] **Descriptive PR title:** Use the format `feat(skills): add <framework-name> skill` or `feat(agents): add <agent-name> agent`.
 
 **AI & Architecture Skills (additional):**

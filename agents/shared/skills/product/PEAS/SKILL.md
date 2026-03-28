@@ -12,12 +12,12 @@ Produce a structured Agent Design Document that fully specifies an AI agent's be
 
 ## The Job
 
-1. **Read `context/todo.md`** to understand what has already been built
-2. **Read `context/self-correction.md`** to absorb past lessons about agent design mistakes
+1. **Read `Context/tasks/todo.md`** to understand what has already been built
+2. **Read `Context/tasks/self-correction.md`** to absorb past lessons about agent design mistakes
 3. Receive an agent description or problem statement from the user
 4. Ask 4 rounds of discovery questions (one per PEAS dimension), **STOP AND WAIT** after each round
 5. Generate the Agent Design Document from the answers
-6. Save to `context/agent-design-[agent-name].md`
+6. Save to `Context/tasks/agent-design-[agent-name].md`
 
 **Important:** Do NOT start implementing. Do NOT select frameworks or write code. Just produce the specification. Architecture decisions belong to the Agentic AI Architect.
 
@@ -154,7 +154,7 @@ Ask these questions and **STOP AND WAIT** for answers before proceeding to outpu
 
 ## Step 5: Generate Agent Design Document
 
-After collecting all answers, generate the document using the template below. Save to `context/agent-design-[agent-name].md`.
+After collecting all answers, generate the document using the template below. Save to `Context/tasks/agent-design-[agent-name].md`.
 
 ### Output Template
 
@@ -234,4 +234,4 @@ Before saving the Agent Design Document:
 - [ ] Risk Register identifies at least 2 risks with mitigations
 - [ ] Skill Dependencies reference real paths under `agents/`
 - [ ] Handoff line points to `agentic_ai_architect.md`
-- [ ] Saved to `context/agent-design-[agent-name].md`
+- [ ] Saved to `Context/tasks/agent-design-[agent-name].md`

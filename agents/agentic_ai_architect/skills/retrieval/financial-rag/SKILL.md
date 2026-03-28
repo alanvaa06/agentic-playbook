@@ -1,6 +1,6 @@
 # Skill: Financial SEC Filings RAG Pipeline
 
-Use this skill when the user asks you to build, run, or extend the SEC filings RAG pipeline. This pipeline covers the **full reporting year** — both **10-Q** (quarterly) and **10-K** (annual) filings — to provide complete financial context. Follow each step in order. If any step fails, log the error and resolution in `context/self-correction.md` before continuing.
+Use this skill when the user asks you to build, run, or extend the SEC filings RAG pipeline. This pipeline covers the **full reporting year** — both **10-Q** (quarterly) and **10-K** (annual) filings — to provide complete financial context. Follow each step in order. If any step fails, log the error and resolution in `Context/tasks/self-correction.md` before continuing.
 
 ---
 
@@ -119,7 +119,7 @@ Build a retrieval chain that:
 
 ## Step 6 — Self-Correction Mandate
 
-Throughout every step above, if you encounter any of the following, **immediately** append an entry to `context/self-correction.md`:
+Throughout every step above, if you encounter any of the following, **immediately** append an entry to `Context/tasks/self-correction.md`:
 
 | Trigger | Example |
 |---|---|
@@ -130,4 +130,4 @@ Throughout every step above, if you encounter any of the following, **immediatel
 | ChromaDB schema conflict | Collection already exists with different metadata |
 | Any unexpected exception | Unhandled tracebacks |
 
-Use the entry format defined in `context/self-correction.md`. Then fix the issue and continue.
+Use the entry format defined in `Context/tasks/self-correction.md`. Then fix the issue and continue.

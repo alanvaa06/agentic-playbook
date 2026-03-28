@@ -134,7 +134,7 @@ for item in output.new_items:
 - **Default model**: If no model is specified, the SDK defaults to `gpt-4o-2024-08-06`.
 
 ## 🚨 Self-Correction Mandate
-Throughout every step of implementing or running this framework, if you encounter any errors or unexpected behavior, **immediately** append an entry to `context/self-correction.md` detailing the failure and the attempted fix. Pay special attention to:
+Throughout every step of implementing or running this framework, if you encounter any errors or unexpected behavior, **immediately** append an entry to `Context/tasks/self-correction.md` detailing the failure and the attempted fix. Pay special attention to:
 - Handoff routing failures where the manager selects the wrong sub-agent
 - `Runner.run_sync` hanging due to missing `nest_asyncio.apply()`
 - Structured output deserialization errors with `output_type` dataclasses

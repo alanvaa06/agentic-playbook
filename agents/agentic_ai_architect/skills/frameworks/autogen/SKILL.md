@@ -97,7 +97,7 @@ chat_result = code_executor.initiate_chat(
 - **Code executor feedback loop**: When generated code fails, the executor's error feeds back to the generator automatically, which then corrects. This is a feature, not a bug — but it can consume many rounds.
 
 ## 🚨 Self-Correction Mandate
-Throughout every step of implementing or running this framework, if you encounter any errors or unexpected behavior, **immediately** append an entry to `context/self-correction.md` detailing the failure and the attempted fix. Pay special attention to:
+Throughout every step of implementing or running this framework, if you encounter any errors or unexpected behavior, **immediately** append an entry to `Context/tasks/self-correction.md` detailing the failure and the attempted fix. Pay special attention to:
 - `LocalCommandLineCodeExecutor` timeout errors (increase `timeout` parameter)
 - GroupChat conversations looping without convergence (increase `max_round` or improve prompts)
 - Code generator producing non-executable code that the executor cannot run

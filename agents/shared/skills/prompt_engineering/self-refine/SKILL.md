@@ -185,7 +185,7 @@ print(code)
 - **No iteration cap:** Always set `MAX_ITERATIONS` to prevent runaway loops. 3 iterations is a good default; diminishing returns are typical after 2-3 rounds.
 
 ## 🚨 Self-Correction Mandate
-Throughout every step of implementing or running this pattern, if you encounter any errors or unexpected behavior, **immediately** append an entry to `context/self-correction.md` detailing the failure and the attempted fix. Pay special attention to:
+Throughout every step of implementing or running this pattern, if you encounter any errors or unexpected behavior, **immediately** append an entry to `Context/tasks/self-correction.md` detailing the failure and the attempted fix. Pay special attention to:
 - The feedback model returning "STOP" prematurely on broken code
 - Refinement producing worse code than the previous iteration (regression)
 - The loop exhausting `MAX_ITERATIONS` without converging on correct code

@@ -13,11 +13,11 @@ Create detailed Product Requirements Documents for any feature, page, applicatio
 ## The Job
 
 1. **Detect the active technology stack** by inspecting `requirements.txt`, `package.json`, and `docker-compose.yml` at runtime. Use stack-specific terminology in all user stories and acceptance criteria.
-2. **Read `context/todo.md`** to understand what has already been built.
+2. **Read `Context/tasks/todo.md`** to understand what has already been built.
 3. **Run Phase 0** — collect the Feature Brief from the user.
 4. **Run Phase 1** — ask 3–6 adaptive clarifying questions using the six fixed categories, with options generated from the brief.
 5. Generate a structured PRD based on answers.
-6. Save to `context/prd-[feature-name].md`.
+6. Save to `Context/tasks/prd-[feature-name].md`.
 
 **Important:** Do NOT start implementing. Just create the PRD.
 
@@ -189,7 +189,7 @@ The PRD reader may be an AI agent in Cursor or a developer. Therefore:
 ## Output
 
 - **Format:** Markdown (`.md`)
-- **Location:** `context/`
+- **Location:** `Context/tasks/`
 - **Filename:** `prd-[feature-name].md` (kebab-case)
 
 ---
@@ -282,7 +282,7 @@ Before saving the PRD:
 - [ ] Non-goals section defines clear boundaries
 - [ ] Constraints & Dependencies section covers only what applies
 - [ ] Acceptance criteria are verifiable, not vague
-- [ ] Saved to `context/prd-[feature-name].md`
+- [ ] Saved to `Context/tasks/prd-[feature-name].md`
 
 ---
 

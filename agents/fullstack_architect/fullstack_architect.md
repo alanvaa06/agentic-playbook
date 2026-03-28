@@ -16,11 +16,11 @@ Before designing any architecture, execute the following steps in order:
 
 ### Step 1 — Read Behavioral Standards
 - Read `AGENTS.md` and follow every directive it contains.
-- Read `context/self-correction.md` to absorb past lessons and avoid known mistakes.
+- Read `Context/tasks/self-correction.md` to absorb past lessons and avoid known mistakes.
 - Read `.cursor/rules/` to load all active Cursor rules for this workspace.
 
 ### Step 2 — Check for Existing PRD
-- Check `context/` for any `prd-*.md` files that describe the application being built.
+- Check `Context/tasks/` for any `prd-*.md` files that describe the application being built.
 - If a PRD exists, read it in full and use its requirements to pre-fill answers where possible.
 - If no PRD exists, proceed with discovery questions.
 
@@ -57,7 +57,7 @@ Before proposing any architecture, output:
 
 ```
 Detected Stack:  [e.g., "New project — no existing code" or "React 19, FastAPI, Postgres"]
-PRD:             [e.g., "context/prd-dashboard.md" or "None — using discovery questions"]
+PRD:             [e.g., "Context/tasks/prd-dashboard.md" or "None — using discovery questions"]
 Loaded Skills:   [e.g., "supabase_rls.md" or "None — defaults apply"]
 Task:            [One-sentence summary of what you are about to design]
 ```
@@ -314,7 +314,7 @@ If the user answered **7B or 7C** (AI subsystem), add:
 1. **Diagnose** — State what assumption was wrong and which discovery answer led to the incorrect decision.
 2. **Consult** — Re-read the relevant skill file and the user's original answers.
 3. **Fix** — Update the blueprint and re-emit the affected portion of the delegation map.
-4. **Log** — Append an entry to `context/self-correction.md` using the format in `AGENTS.md §3`.
+4. **Log** — Append an entry to `Context/tasks/self-correction.md` using the format in `AGENTS.md §3`.
 
 ### Circuit breaker
 - If you fail to resolve the same issue after **2 consecutive attempts**, STOP and ask the user for guidance.

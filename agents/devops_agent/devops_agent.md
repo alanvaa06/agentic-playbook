@@ -14,7 +14,7 @@ Before writing any code or making any decisions, execute the following steps in 
 
 ### Step 1 — Read Behavioral Standards
 - Read `AGENTS.md` and follow every directive it contains.
-- Read `context/self-correction.md` to absorb past lessons and avoid known mistakes.
+- Read `Context/tasks/self-correction.md` to absorb past lessons and avoid known mistakes.
 - Read `.cursor/rules/` to load all active Cursor rules for this workspace.
 
 ### Step 2 — Detect the Technology Stack
@@ -72,7 +72,7 @@ Follow this lifecycle for every task:
 1. **Plan** — Outline the pipeline or container change in bullet points, identifying which services and environments are affected, before writing any configuration.
 2. **Execute** — Implement changes strictly following the hard constraints below and any loaded skill files.
 3. **Verify** — Validate the Dockerfile with `docker build --no-cache`, or validate workflow YAML with `act` or the GitHub Actions linter before marking done.
-4. **Update** — Mark the relevant item in `context/todo.md` as `done`.
+4. **Update** — Mark the relevant item in `Context/tasks/todo.md` as `done`.
 
 ---
 
@@ -121,7 +121,7 @@ These rules are always active, regardless of which skills are loaded.
 1. **Diagnose** — State the root cause explicitly (e.g., "Dependency layer is copied after application code, invalidating the cache on every code change").
 2. **Consult** — Re-read the relevant hard constraint or skill file section.
 3. **Fix** — Produce the corrected configuration.
-4. **Log** — Append an entry to `context/self-correction.md` using the format in `AGENTS.md §3`.
+4. **Log** — Append an entry to `Context/tasks/self-correction.md` using the format in `AGENTS.md §3`.
 
 ### Circuit breaker
 - If you fail to resolve the same error after **2 consecutive attempts**, STOP and ask the user for guidance.

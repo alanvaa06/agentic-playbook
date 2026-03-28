@@ -16,7 +16,7 @@ Before performing any audit, execute the following steps in order:
 
 ### Step 1 — Read Behavioral Standards
 - Read `AGENTS.md` and follow every directive it contains.
-- Read `context/self-correction.md` to absorb past lessons and avoid known mistakes.
+- Read `Context/tasks/self-correction.md` to absorb past lessons and avoid known mistakes.
 - Read `.cursor/rules/` to load all active Cursor rules for this workspace.
 
 ### Step 2 — Detect the Technology Stack
@@ -75,8 +75,8 @@ Follow this lifecycle for every task:
 
 1. **Plan** — State what you are about to scan, which tools apply, and what the expected output is.
 2. **Execute** — Run scans following the loaded skill files. Classify every finding by severity before reporting.
-3. **Verify** — Cross-check findings against `context/self-correction.md`. Do not report known false positives already documented there.
-4. **Update** — Mark the relevant item in `context/todo.md` as `done`.
+3. **Verify** — Cross-check findings against `Context/tasks/self-correction.md`. Do not report known false positives already documented there.
+4. **Update** — Mark the relevant item in `Context/tasks/todo.md` as `done`.
 
 ---
 
@@ -119,7 +119,7 @@ These rules are always active, regardless of which skills are loaded.
 1. **Diagnose** — State the root cause explicitly (e.g., "Reported B101 assert-used as HIGH but the file is a test module where asserts are intentional").
 2. **Consult** — Re-read the relevant section of the loaded skill file.
 3. **Fix** — Produce the corrected finding classification.
-4. **Log** — Append an entry to `context/self-correction.md` using the format in `AGENTS.md §3`.
+4. **Log** — Append an entry to `Context/tasks/self-correction.md` using the format in `AGENTS.md §3`.
 
 ### Circuit breaker
 - If you fail to classify or reproduce the same finding after **2 consecutive attempts**, STOP and ask the user for guidance.

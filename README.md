@@ -108,7 +108,7 @@ The agents and rules complement each other in a continuous quality loop:
 
 Our AI doesn't just write code — it learns. Every agent in this repository is mandated to:
 
-1. **Read** [`context/self-correction.md`](context/self-correction.md) at the start of every session.
+1. **Read** [`Context/tasks/self-correction.md`](Context/tasks/self-correction.md) at the start of every session.
 2. **Log** any unexpected errors, deprecations, or hallucinations with a structured entry.
 3. **Apply** past lessons proactively, avoiding known pitfalls before they happen.
 
@@ -158,9 +158,10 @@ agentic-playbook/
 │       ├── llm_standards/                  Model selection, multimodal routing
 │       └── evaluation/                     RAG eval, eval-driven development
 ├── AGENTS.md                               Behavioral orchestration protocol (root-level)
-├── context/                                AI working memory
-│   ├── todo.md                             Canonical task tracker
-│   └── self-correction.md                  Learning database
+├── Context/
+│   └── tasks/                              AI working memory
+│       ├── todo.md                         Canonical task tracker
+│       └── self-correction.md              Learning database
 ├── docs/                                   Project documentation
 │   ├── BUILD_PLAYBOOK.md                   Step-by-step guide: what to build first and in what order
 │   └── CONTRIBUTING.md                     How to add skills, agents, and rules

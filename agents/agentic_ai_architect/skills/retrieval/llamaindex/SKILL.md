@@ -80,7 +80,7 @@ tool_spec.spec_functions
 - **4 API keys required**: All four keys (Polygon, Finnhub, Alpha Vantage, NewsAPI) must be valid; a single invalid key can cause silent failures in specific tools.
 
 ## 🚨 Self-Correction Mandate
-Throughout every step of implementing or running this framework, if you encounter any errors or unexpected behavior, **immediately** append an entry to `context/self-correction.md` detailing the failure and the attempted fix. Pay special attention to:
+Throughout every step of implementing or running this framework, if you encounter any errors or unexpected behavior, **immediately** append an entry to `Context/tasks/self-correction.md` detailing the failure and the attempted fix. Pay special attention to:
 - Tools returning "Will be right back" or HTML error pages instead of data
 - News queries returning results for the wrong company
 - `ImportError` from missing `llama_index.tools.finance` package (requires `pip install llama-index-tools-finance`)

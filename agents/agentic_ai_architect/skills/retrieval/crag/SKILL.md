@@ -84,7 +84,7 @@ The CRAG pipeline exposes these intermediate variables:
 - **`similarity_top_k` tuning**: Too low (1) risks missing relevant chunks; too high (10+) increases evaluation cost. Start with `similarity_top_k=2`.
 
 ## 🚨 Self-Correction Mandate
-Throughout every step of implementing or running this framework, if you encounter any errors or unexpected behavior, **immediately** append an entry to `context/self-correction.md` detailing the failure and the attempted fix. Pay special attention to:
+Throughout every step of implementing or running this framework, if you encounter any errors or unexpected behavior, **immediately** append an entry to `Context/tasks/self-correction.md` detailing the failure and the attempted fix. Pay special attention to:
 - Relevancy evaluator scoring all documents as "no" (indicates poor chunking or query quality)
 - Tavily web search returning no results for the transformed query
 - Multi-question prompts producing hallucinated answers not grounded in any source

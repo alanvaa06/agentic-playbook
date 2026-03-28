@@ -78,7 +78,7 @@ agent.run("Fetch the NVIDIA historical stock prices for the entire year of 2024"
 - **Tool decorator**: Import `tool` from `transformers`, not from `smolagents`.
 
 ## 🚨 Self-Correction Mandate
-Throughout every step of implementing or running this framework, if you encounter any errors or unexpected behavior, **immediately** append an entry to `context/self-correction.md` detailing the failure and the attempted fix. Pay special attention to:
+Throughout every step of implementing or running this framework, if you encounter any errors or unexpected behavior, **immediately** append an entry to `Context/tasks/self-correction.md` detailing the failure and the attempted fix. Pay special attention to:
 - Agent hallucinating conclusions without actual computation in the generated code
 - `ImportError` or unauthorized import errors during code execution
 - `web_search` returning fabricated or incorrect structured data

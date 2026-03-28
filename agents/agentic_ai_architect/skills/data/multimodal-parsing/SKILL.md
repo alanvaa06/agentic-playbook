@@ -143,7 +143,7 @@ print(response.content[0].text)
 - **Cost awareness**: LlamaParse Premium charges per page. Anthropic charges per token (the PDF is converted to tokens internally). For a 100-page 10-K, estimate costs before processing.
 
 ## Self-Correction Mandate
-Throughout every step of implementing or running this pattern, if you encounter any errors or unexpected behavior, **immediately** append an entry to `context/self-correction.md` detailing the failure and the attempted fix. Pay special attention to:
+Throughout every step of implementing or running this pattern, if you encounter any errors or unexpected behavior, **immediately** append an entry to `Context/tasks/self-correction.md` detailing the failure and the attempted fix. Pay special attention to:
 - Anthropic beta flags being rejected (beta may have graduated to GA or changed names)
 - LlamaParse Premium returning empty markdown for chart-heavy pages
-- Model version returning 404 (check for sunset — see the Gemini lesson in `context/self-correction.md`)
+- Model version returning 404 (check for sunset — see the Gemini lesson in `Context/tasks/self-correction.md`)

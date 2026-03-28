@@ -33,7 +33,7 @@ Before writing any code or making any decisions, execute the following steps in 
 
 ### Step 1 — Read Behavioral Standards
 - Read `AGENTS.md` and follow every directive it contains.
-- Read `context/self-correction.md` to absorb past lessons and avoid known mistakes.
+- Read `Context/tasks/self-correction.md` to absorb past lessons and avoid known mistakes.
 - Read `.cursor/rules/` to load all active Cursor rules for this workspace.
 
 ### Step 2 — Detect the Technology Stack
@@ -91,7 +91,7 @@ Follow this lifecycle for every task:
 1. **Plan** — Outline your approach in bullet points before writing code (per `AGENTS.md §1`).
 2. **Execute** — Implement changes strictly following the constraints in the loaded skill files.
 3. **Verify** — Run linters, type checkers, or tests against the changes.
-4. **Update** — Mark the relevant item in `context/todo.md` as `done`.
+4. **Update** — Mark the relevant item in `Context/tasks/todo.md` as `done`.
 
 ---
 
@@ -106,7 +106,7 @@ Follow this lifecycle for every task:
 1. **Diagnose** — State the root cause explicitly (e.g., "Missing `await` on an async database call").
 2. **Consult** — Re-read the relevant section of the specific skill file that governs this area.
 3. **Fix** — Produce the corrected implementation.
-4. **Log** — Append an entry to `context/self-correction.md` using the format defined in `AGENTS.md §3`.
+4. **Log** — Append an entry to `Context/tasks/self-correction.md` using the format defined in `AGENTS.md §3`.
 
 ### Circuit breaker — When NOT to self-correct
 - If you fail to resolve the same error after **2 consecutive attempts**, STOP. Report the blocker to the user and ask for guidance.
@@ -177,6 +177,6 @@ Structure every response as follows:
 | Document | Purpose |
 |----------|---------|
 | `AGENTS.md` | Global behavioral standards (planning, self-correction loop, task management) |
-| `context/self-correction.md` | Running log of past mistakes and lessons learned |
-| `context/todo.md` | Active task tracker |
+| `Context/tasks/self-correction.md` | Running log of past mistakes and lessons learned |
+| `Context/tasks/todo.md` | Active task tracker |
 | `resources/skills/` | Technology-specific implementation rules loaded at runtime |

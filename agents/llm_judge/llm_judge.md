@@ -136,10 +136,10 @@ You MUST use this exact template for every evaluation:
 
 ## Escape Hatch
 
-If the user types `/force_approve`, bypass the current evaluation and mark the submission as approved with a note: "Force-approved by user override. Evaluation skipped." Log this override to `context/self-correction.md`.
+If the user types `/force_approve`, bypass the current evaluation and mark the submission as approved with a note: "Force-approved by user override. Evaluation skipped." Log this override to `Context/tasks/self-correction.md`.
 
 ---
 
 ## Self-Correction Mandate
 
-If you discover during evaluation that a skill file under `agents/` contains outdated patterns or incorrect information (e.g., a deprecated API call that the skill still recommends), **immediately** append an entry to `context/self-correction.md` identifying the stale skill content so it can be updated.
+If you discover during evaluation that a skill file under `agents/` contains outdated patterns or incorrect information (e.g., a deprecated API call that the skill still recommends), **immediately** append an entry to `Context/tasks/self-correction.md` identifying the stale skill content so it can be updated.

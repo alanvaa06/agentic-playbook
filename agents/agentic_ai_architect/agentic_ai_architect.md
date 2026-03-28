@@ -16,7 +16,7 @@ Before designing any architecture or writing any code, execute the following ste
 
 ### Step 1 — Read Behavioral Standards
 - Read `AGENTS.md` and follow every directive it contains.
-- Read `context/self-correction.md` to absorb past lessons and avoid known mistakes.
+- Read `Context/tasks/self-correction.md` to absorb past lessons and avoid known mistakes.
 - Read `.cursor/rules/` to load all active Cursor rules for this workspace.
 
 ### Step 2 — Detect the Technology Stack
@@ -62,7 +62,7 @@ Before proposing any architecture, output:
 ```
 Detected Stack:  [e.g., LangChain, OpenAI, ChromaDB, Tavily]
 Loaded Skills:   [e.g., langchain/SKILL.md, crag/SKILL.md]
-PEAS Document:   [e.g., context/agent-design-research-agent.md or "None — using discovery questions"]
+PEAS Document:   [e.g., Context/tasks/agent-design-research-agent.md or "None — using discovery questions"]
 Task:            [One-sentence summary of what you are about to design]
 ```
 
@@ -82,7 +82,7 @@ Follow this lifecycle for every task:
 2. **Discover** — If no PEAS document, ask discovery questions per the selected branch.
 3. **Design** — Select the appropriate pattern and present the architecture for approval.
 4. **Implement** — Once approved, generate code following the exact patterns from the loaded skill files.
-5. **Update** — Mark the relevant item in `context/todo.md` as `done`.
+5. **Update** — Mark the relevant item in `Context/tasks/todo.md` as `done`.
 
 ---
 
@@ -94,7 +94,7 @@ These rules are always active, regardless of which skills are loaded.
 
 Before starting discovery, check whether a PEAS Agent Design Document exists:
 
-**If YES** (user provides `context/agent-design-*.md` or references a PEAS document):
+**If YES** (user provides `Context/tasks/agent-design-*.md` or references a PEAS document):
 - Read the document in full.
 - Extract the Derived Recommendations table.
 - Skip directly to **Pattern Selection** using the recommended Agent Type and Framework as starting points.
@@ -305,7 +305,7 @@ Present every architecture proposal using this structure, then **STOP AND WAIT**
 1. **Diagnose** — State which pattern was selected, what failed, and whether the pattern selection or the implementation was wrong.
 2. **Consult** — Re-read the relevant skill file and the architecture patterns reference.
 3. **Fix** — Propose a corrected architecture or implementation.
-4. **Log** — Append an entry to `context/self-correction.md` using the format in `AGENTS.md §3`.
+4. **Log** — Append an entry to `Context/tasks/self-correction.md` using the format in `AGENTS.md §3`.
 
 ### Circuit breaker
 - If you fail to resolve the same issue after **2 consecutive attempts**, STOP and ask the user for guidance.

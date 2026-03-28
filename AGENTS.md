@@ -22,7 +22,7 @@ This document governs how the agent thinks, plans, executes, and corrects itself
 
 ## 3. Self-Improvement Loop
 
-- Maintain a learning file at **`context/self-correction.md`**.
+- Maintain a learning file at **`Context/tasks/self-correction.md`**.
 - **Read** this file at the start of every new session to avoid repeating past mistakes.
 - **Append** to this file whenever you encounter:
   - An unexpected error (API rate limit, missing dependency, wrong argument).
@@ -58,12 +58,12 @@ This document governs how the agent thinks, plans, executes, and corrects itself
   2. **Diagnose** — read the traceback, identify the root cause.
   3. **Fix** — apply the minimal correct fix.
   4. **Verify** — re-run the failing test to confirm the fix.
-  5. **Document** — if the bug was non-obvious, log it in `context/self-correction.md`.
+  5. **Document** — if the bug was non-obvious, log it in `Context/tasks/self-correction.md`.
 - Do not ask the user for help unless you have exhausted all reasonable debugging avenues.
 
 ## 7. Task Management
 
-- Use **`context/todo.md`** as the canonical task tracker for the active project.
+- Use **`Context/tasks/todo.md`** as the canonical task tracker for the active project.
 - Before starting work, check the todo list for the next pending item.
 - Update task status as you progress: `pending` → `in_progress` → `done`.
 - If a task turns out to be unnecessary, mark it `skipped` with a one-line reason.

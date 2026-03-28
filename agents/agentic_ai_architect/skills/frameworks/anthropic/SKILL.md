@@ -106,7 +106,7 @@ results = parallel("Analyze the impact of market volatility on this actor.", sub
 - **nest_asyncio required**: When running in Jupyter notebooks, always call `nest_asyncio.apply()` before agent execution to avoid event loop conflicts.
 
 ## 🚨 Self-Correction Mandate
-Throughout every step of implementing or running this framework, if you encounter any errors or unexpected behavior, **immediately** append an entry to `context/self-correction.md` detailing the failure and the attempted fix. Pay special attention to:
+Throughout every step of implementing or running this framework, if you encounter any errors or unexpected behavior, **immediately** append an entry to `Context/tasks/self-correction.md` detailing the failure and the attempted fix. Pay special attention to:
 - Tool-calling failures where Claude misroutes to the wrong function
 - ThreadPoolExecutor deadlocks or timeout errors during parallel execution
 - LlamaIndex version incompatibilities with the Anthropic LLM wrapper
