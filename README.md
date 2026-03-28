@@ -2,7 +2,7 @@
 
 **A curated knowledge base of AI agent patterns, framework skills, and engineering standards for building robust full-stack and AI-powered applications.**
 
-Building AI agents and full-stack applications often leads to messy, inconsistent code — each developer reinventing patterns, hardcoding API keys, and defaulting to whatever LLM the tutorial used. This repository solves that by providing a **three-layered AI orchestration system** (Skills, Agents, and Rules) that any team member can reference, and that integrates seamlessly with AI-powered editors like Cursor.
+Building AI agents and full-stack applications often leads to messy, inconsistent code — each developer reinventing patterns, hardcoding API keys, and defaulting to whatever LLM the tutorial used. This repository solves that by providing a **colocated agent architecture** where each agent owns its skills, plus project-wide rules — all in plain Markdown that integrates seamlessly with AI-powered editors like Cursor.
 
 ---
 
@@ -13,7 +13,7 @@ git clone https://github.com/<your-org>/agentic-playbook.git
 cd agentic-playbook
 ```
 
-The `resources/` directory is immediately browsable — open any `SKILL.md` to learn a framework, or reference an agent persona in your AI chat.
+Browse `agents/` to find any agent and its colocated skills, or open `resources/rules/` for project-wide standards.
 
 **Optional — Cursor IDE integration:**
 
@@ -29,16 +29,55 @@ This creates symlinks so Cursor auto-applies rules and discovers agents/skills v
 
 ---
 
-## Architecture: The Three Layers of AI
+## Architecture
 
-This repository is built on three complementary systems, each operating at a different level of abstraction:
+The repository is organized around two top-level concerns:
 
 ```
-resources/
-├── rules/         Guardrails — project-wide standards and constraints
-├── agents/        Discipline — personas that enforce specific workflows
-└── skills/        Vocabulary — framework templates for code generation
+agents/              Each agent owns its role definition and skills
+resources/rules/     Project-wide guardrails (editor-enforced)
 ```
+
+### Agents — Colocated Roles + Skills
+
+Every agent lives in its own folder alongside the skills it uses. This makes it trivial to see what an agent knows, add skills, or onboard new team members.
+
+```
+agents/
+├── frontend_agent/
+│   ├── frontend_agent.md          Role definition
+│   └── skills/                    8 colocated skills
+│       ├── react_best_practices.md
+│       ├── tailwind_design_system.md
+│       ├── framer_motion.md
+│       ├── gsap-animations.md
+│       ├── smooth-scroll.md
+│       ├── react_three_fiber.md
+│       ├── forms_validation.md
+│       └── sanity_cms.md
+├── backend_agent/                 3 skills
+├── database_agent/                4 skills
+├── ...
+└── shared/                        Skills not owned by any single agent
+    └── skills/
+        ├── prompt_engineering/
+        └── product/
+```
+
+| Agent | Type | Skills | Specialty |
+|-------|------|--------|-----------|
+| **frontend_agent** | Role | 8 | React 19, Tailwind v4, Framer Motion, GSAP, Lenis, R3F, forms, Sanity CMS |
+| **backend_agent** | Role | 3 | FastAPI, SQL/Postgres, Supabase RLS |
+| **database_agent** | Role | 4 | Migrations, vector DBs, SQL/Postgres, Supabase RLS |
+| **devops_agent** | Role | 2 | Docker, GitHub Actions |
+| **qa_agent** | Role | 4 | Pytest, Jest, Mypy, Ruff |
+| **security_agent** | Role | 3 | SAST, secrets scanning, dependency audit |
+| **payment_agent** | Role | 3 | Stripe, PayPal, MercadoPago |
+| **agentic_ai_architect** | Architect | 14 | LangChain, CrewAI, AutoGen, SmolAgents, OpenAI, Anthropic, LlamaIndex, CRAG, Financial RAG, multimodal parsing, vision APIs, synthetic data, vector DBs |
+| **fullstack_architect** | Architect | 0 | Blueprints apps and delegates to role agents (references their skills) |
+| **llm_judge** | Reviewer | 0 | Scores code against a 10-point rubric (dynamically loads relevant skills) |
+| **feature_tracker** | Reviewer | 0 | Maps codebase architecture and tracks PRD gaps |
+| **shared** | — | 5 | Prompt engineering (CoVe, Self-Refine, chaining), Product (PRD, PEAS) |
 
 ### Rules (Guardrails)
 
@@ -51,53 +90,16 @@ Rules define project-wide standards. When integrated with a compatible editor, t
 | **LLM Standards** | `default-models`, `multimodal-parsing` | Use Anthropic/Gemini by default; Claude for chart-heavy PDFs |
 | **Evaluation** | `rag-evaluation`, `edd-evaluation` | Every RAG pipeline and agent must include evaluation metrics |
 
-### Agents (Discipline)
-
-Agents are active personas that change how the AI *behaves*. Instead of just writing code, the AI adopts a specific workflow: breaking tasks into steps, evaluating code against a rubric, or guiding architectural decisions.
-
-| Category | Agent | What It Does |
-|----------|-------|-------------|
-| **Roles** | `qa_agent.md` | Static analysis, test execution, coverage reporting |
-| **Roles** | `frontend_agent.md` | React/UI component development and styling |
-| **Roles** | `backend_agent.md` | API development and dependency injection |
-| **Roles** | `database_agent.md` | Schema design and migrations |
-| **Roles** | `devops_agent.md` | Infrastructure, CI/CD, and containers |
-| **Roles** | `payment_agent.md` | Webhooks and transaction handling |
-| **Roles** | `security_agent.md` | Vulnerability scanning and secrets |
-| **Architects** | `agentic_ai_architect.md` | Designs AI systems (RAG, multi-agent, multimodal, financial, synthetic data) |
-| **Architects** | `fullstack_architect.md` | Blueprints full-stack web apps and delegates to role agents |
-| **Reviewers** | `llm_judge.md` | Evaluates code against a strict 10-point rubric |
-| **Reviewers** | `feature-tracker.md` | Maps codebase architecture and tracks PRD gaps |
-
-### Skills (Vocabulary)
-
-Skills are passive documentation files that teach the AI the syntax, patterns, and pitfalls of specific frameworks. When you mention a framework, the AI reads the corresponding skill and generates tailored code.
-
-| Category | Path | Skills |
-|----------|------|--------|
-| **AI Frameworks** | `skills/ai/frameworks/` | `langchain`, `autogen`, `crewai`, `smolagents`, `anthropic`, `openai` |
-| **RAG & Retrieval** | `skills/ai/retrieval/` | `crag` (Corrective RAG), `llamaindex`, `financial-rag` |
-| **Multimodal & Data** | `skills/ai/data/` | `multimodal-parsing`, `vision-api-syntax`, `synthetic-data` |
-| **Prompt Engineering** | `skills/prompt_engineering/` | `cove` (Chain-of-Verification), `self-refine`, `prompt_chaining` |
-| **Product** | `skills/product/` | `PRD` (Product Requirements Documents), `PEAS` (Agent Design Documents) |
-| **Backend** | `skills/backend/` | `fastapi_architecture`, `sql_postgres`, `supabase_rls` |
-| **Frontend** | `skills/frontend/` | `react_best_practices`, `tailwind_design_system`, `forms_validation`, `sanity_cms`, `framer_motion`, `react_three_fiber` |
-| **Database** | `skills/database/` | `migrations`, `vector_dbs` |
-| **DevOps** | `skills/devops/` | `docker_best_practices`, `github_actions` |
-| **Payments** | `skills/payments/` | `stripe`, `mercadopago`, `paypal` |
-| **Security** | `skills/security/` | `sast`, `secrets_scanning`, `dependency_audit` |
-| **QA** | `skills/qa/` | `testing_pytest`, `testing_jest`, `static_analysis_mypy`, `linting_ruff` |
-
 ---
 
 ## How the Layers Work Together
 
-The three layers complement each other in a continuous quality loop:
+The agents and rules complement each other in a continuous quality loop:
 
-1. A **PRD** or **PEAS Agent Design Document** defines what to build (product or AI specification).
+1. A **PRD** or **PEAS Agent Design Document** defines what to build (`agents/shared/skills/product/`).
 2. The **`fullstack_architect`** blueprints the web application and produces a delegation map for role agents.
-3. If the app includes an AI subsystem, **`agentic_ai_architect`** selects the right pattern (RAG, multi-agent, multimodal) and loads the matching skills.
-4. **Role agents** (backend, frontend, database, devops, qa) implement their portions following loaded skills.
+3. If the app includes an AI subsystem, **`agentic_ai_architect`** selects the right pattern (RAG, multi-agent, multimodal) and loads its colocated skills.
+4. **Role agents** (backend, frontend, database, devops, qa) implement their portions using their own colocated skills.
 5. **`llm_judge`** evaluates the generated code against the skill's patterns and scores it.
 6. Throughout the process, **Rules** silently enforce security, model selection, and evaluation standards.
 
@@ -119,30 +121,45 @@ This creates a **compound learning effect**: every mistake one developer's AI en
 
 ```
 agentic-playbook/
-├── resources/                           The AI knowledge base
-│   ├── rules/                              Project-wide guardrails
-│   │   ├── code_quality/                   Type safety, agent behavior
-│   │   ├── security/                       API key management
-│   │   ├── llm_standards/                  Model selection, multimodal routing
-│   │   └── evaluation/                     RAG eval, eval-driven development
-│   ├── agents/                             Workflow personas
-│   │   ├── roles/                          Role-based agents (backend, frontend, qa, devops, etc.)
-│   │   ├── reviewers/                      LLM judge, feature tracker
-│   │   └── architects/                     Agentic AI architect, Full Stack architect
-│   └── skills/                             Framework templates
-│       ├── ai/                             AI-domain skills
-│       │   ├── frameworks/                 AutoGen, CrewAI, LangChain, OpenAI, Anthropic, SmolAgents
-│       │   ├── retrieval/                  CRAG, LlamaIndex, Financial RAG
-│       │   └── data/                       PDF parsing, Vision APIs, Synthetic data
-│       ├── prompt_engineering/             CoVe, Self-Refine, Prompt Chaining
-│       ├── product/                        PRD templates, PEAS agent design
-│       ├── backend/                        FastAPI, SQL/Postgres, Supabase RLS
-│       ├── frontend/                       React, Tailwind, Sanity CMS, Framer Motion
-│       ├── database/                       Migrations, Vector DBs
-│       ├── devops/                         Docker, GitHub Actions
-│       ├── payments/                       Stripe, MercadoPago, PayPal
-│       ├── security/                       SAST, Secrets scanning, Dependency audit
-│       └── qa/                             Pytest, Jest, Mypy, Ruff
+├── agents/                                 Colocated agent definitions + skills
+│   ├── frontend_agent/
+│   │   ├── frontend_agent.md               Role definition
+│   │   └── skills/                         React, Tailwind, Framer Motion, GSAP, Lenis, R3F, forms, Sanity
+│   ├── backend_agent/
+│   │   ├── backend_agent.md
+│   │   └── skills/                         FastAPI, SQL/Postgres, Supabase RLS
+│   ├── database_agent/
+│   │   ├── database_agent.md
+│   │   └── skills/                         Migrations, Vector DBs, SQL/Postgres, Supabase RLS
+│   ├── devops_agent/
+│   │   ├── devops_agent.md
+│   │   └── skills/                         Docker, GitHub Actions
+│   ├── qa_agent/
+│   │   ├── qa_agent.md
+│   │   └── skills/                         Pytest, Jest, Mypy, Ruff
+│   ├── security_agent/
+│   │   ├── security_agent.md
+│   │   └── skills/                         SAST, Secrets scanning, Dependency audit
+│   ├── payment_agent/
+│   │   ├── payment_agent.md
+│   │   └── skills/                         Stripe, PayPal, MercadoPago
+│   ├── agentic_ai_architect/
+│   │   ├── agentic_ai_architect.md
+│   │   └── skills/                         14 AI skills (frameworks, retrieval, data, vector DBs)
+│   ├── fullstack_architect/
+│   │   └── fullstack_architect.md          References other agents' skills for blueprint decisions
+│   ├── llm_judge/
+│   │   └── llm_judge.md                   Strict code evaluator (10-point rubric)
+│   ├── feature_tracker/
+│   │   └── feature-tracker.md             Codebase mapping and PRD gap analysis
+│   └── shared/
+│       └── skills/                         Prompt engineering (CoVe, Self-Refine, chaining), Product (PRD, PEAS)
+├── resources/
+│   └── rules/                              Project-wide guardrails
+│       ├── code_quality/                   Type safety, agent behavior
+│       ├── security/                       API key management
+│       ├── llm_standards/                  Model selection, multimodal routing
+│       └── evaluation/                     RAG eval, eval-driven development
 ├── docs/                                   Project documentation
 │   ├── BUILD_PLAYBOOK.md                   Step-by-step guide: what to build first and in what order
 │   ├── AGENTS.md                           Behavioral orchestration protocol
@@ -161,11 +178,11 @@ agentic-playbook/
 
 ## Editor Integration
 
-This repository is **editor-agnostic**. The `resources/` folder is plain Markdown — usable in any AI-powered editor, or even copy-pasted into web-based LLM interfaces.
+This repository is **editor-agnostic**. The `agents/` and `resources/` folders are plain Markdown — usable in any AI-powered editor, or even copy-pasted into web-based LLM interfaces.
 
 ### Cursor IDE
 
-We provide setup scripts that symlink `resources/` into Cursor's expected `.cursor/` directory:
+We provide setup scripts that symlink into Cursor's expected `.cursor/` directory:
 
 | Platform | Command |
 |----------|---------|
@@ -192,9 +209,9 @@ Read the full guide: **[docs/CONTRIBUTING.md](docs/CONTRIBUTING.md)**
 
 ### Quick Version
 
-1. Pick the right category in `resources/skills/`.
-2. Create a folder: `resources/skills/<category>/your-framework/`
-3. Add a `SKILL.md` following the [template](docs/CONTRIBUTING.md#step-4--fill-out-the-template).
+1. Find the agent that owns the skill domain in `agents/`.
+2. Add your skill file to `agents/<agent_name>/skills/`.
+3. Register the skill in the agent's Skill Registry table.
 4. Open a PR with the prefix `feat(skills):`.
 
 ---
@@ -203,6 +220,7 @@ Read the full guide: **[docs/CONTRIBUTING.md](docs/CONTRIBUTING.md)**
 
 | Principle | Implementation |
 |-----------|---------------|
+| **Colocation** | Each agent owns its skills — everything it needs lives in one folder |
 | **Autonomy** | Agents complete work without user intervention; ask only when genuinely blocked |
 | **Correctness over speed** | A slower, correct solution beats a fast, broken one |
 | **Continuous learning** | Every mistake is logged and never repeated |
