@@ -34,6 +34,18 @@ powershell -ExecutionPolicy Bypass -File scripts\setup_cursor.ps1
 
 This creates symlinks so Cursor auto-applies rules and discovers agents/skills via `@` mentions.
 
+### Plugin install (Claude Code, Codex, Gemini, Copilot, Cursor)
+
+```bash
+
+/plugin marketplace add <your-org>/agentic-playbook-marketplace
+
+/plugin install agentic-playbook
+
+```
+
+Registers all role agents, skills, and the `/brainstorm` `/write-plan` `/execute-plan` `/ship` commands. Repo also still works via plain `git clone` — see [docs/process/USAGE.md](docs/process/USAGE.md).
+
 ---
 
 ## Architecture
