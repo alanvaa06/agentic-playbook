@@ -1,3 +1,8 @@
+---
+name: supabase-rls
+description: Use when implementing auth or data access in Supabase projects. Covers RLS policy authoring, Supabase Auth flows, and supabase-py/JS client CRUD patterns.
+---
+
 # Supabase Row Level Security
 
 **Domain:** Backend

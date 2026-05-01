@@ -1,3 +1,8 @@
+---
+name: forms-validation
+description: Use when building any form with client-side validation. Covers react-hook-form patterns, Zod schema integration, async submission, and error display.
+---
+
 # Forms & Validation
 
 **Domain:** Frontend

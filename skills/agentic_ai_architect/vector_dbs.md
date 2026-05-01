@@ -1,3 +1,8 @@
+---
+name: vector-dbs
+description: Use when implementing semantic search, RAG retrieval, or vector similarity features. Covers pgvector, Pinecone, Chroma, Qdrant, and Weaviate setup, querying, and debugging.
+---
+
 # Vector Databases
 
 **Domain:** Database

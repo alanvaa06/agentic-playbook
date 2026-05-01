@@ -1,3 +1,8 @@
+---
+name: framer-motion
+description: Use when adding entrance, exit, layout, or scroll-triggered animations to React components. Covers Framer Motion variants, page transitions, and SVG path animations.
+---
+
 # Framer Motion
 
 **Domain:** Frontend

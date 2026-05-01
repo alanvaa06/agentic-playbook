@@ -1,3 +1,8 @@
+---
+name: docker-best-practices
+description: Use when writing or modifying Dockerfiles or docker-compose configurations. Covers multi-stage builds, image optimization, healthchecks, non-root users, and .dockerignore.
+---
+
 # Docker Best Practices
 
 **Domain:** DevOps

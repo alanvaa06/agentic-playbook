@@ -1,3 +1,8 @@
+---
+name: react-best-practices
+description: Use when building or refactoring React components. Covers functional-only components, typed props, useEffect cleanup rules, and the lint/style invariants enforced project-wide.
+---
+
 # React Best Practices
 
 **Domain:** Frontend

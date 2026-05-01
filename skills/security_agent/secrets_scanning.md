@@ -1,3 +1,8 @@
+---
+name: secrets-scanning
+description: Use when auditing git history or source files for accidentally committed secrets. Covers trufflehog/gitleaks, pre-commit hooks, .gitignore completeness, and CI secret exposure.
+---
+
 # Secrets Scanning
 
 **Domain:** Security

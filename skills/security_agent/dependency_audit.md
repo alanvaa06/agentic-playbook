@@ -1,3 +1,8 @@
+---
+name: dependency-audit
+description: Use when auditing Python or Node.js dependencies for CVEs. Covers pip-audit, npm audit, Docker image scanning, CVE triage, and dependency pinning strategy.
+---
+
 # Dependency Audit
 
 **Domain:** Security

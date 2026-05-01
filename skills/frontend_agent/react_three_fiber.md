@@ -1,3 +1,8 @@
+---
+name: react-three-fiber
+description: Use when rendering 3D scenes, models, or particle effects in React. Covers React Three Fiber setup, Three.js integration, interactive 3D showcases, and WebGL patterns.
+---
+
 # React Three Fiber
 
 **Domain:** Frontend

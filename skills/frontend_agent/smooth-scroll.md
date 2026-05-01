@@ -1,3 +1,8 @@
+---
+name: smooth-scroll
+description: Use when adding buttery-smooth inertial scrolling to landing or marketing pages. Covers Lenis setup, integration with Framer Motion and GSAP ScrollTrigger, and scroll position sync.
+---
+
 # Smooth Scroll (Lenis)
 
 **Domain:** Frontend

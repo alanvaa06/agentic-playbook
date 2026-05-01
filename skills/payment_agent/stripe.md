@@ -1,3 +1,8 @@
+---
+name: stripe
+description: Use when integrating Stripe payments. Covers PaymentIntents, subscriptions, webhook handlers, checkout sessions, Payment Element, and failed payment debugging.
+---
+
 # Stripe Payments
 
 **Domain:** Payments

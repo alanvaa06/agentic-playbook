@@ -1,3 +1,8 @@
+---
+name: paypal
+description: Use when integrating PayPal payments. Covers Orders API v2, webhook handling, stuck APPROVED order debugging, and refund issuance against completed captures.
+---
+
 # PayPal Payments
 
 **Domain:** Payments

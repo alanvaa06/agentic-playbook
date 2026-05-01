@@ -1,3 +1,8 @@
+---
+name: financial-rag
+description: Use when building or extending a SEC filings RAG pipeline that ingests 10-Q and 10-K filings (full reporting year). Covers edgartools data acquisition, chunking, embedding, retrieval, and self-correction logging on failure.
+---
+
 # Skill: Financial SEC Filings RAG Pipeline
 
 Use this skill when the user asks you to build, run, or extend the SEC filings RAG pipeline. This pipeline covers the **full reporting year** — both **10-Q** (quarterly) and **10-K** (annual) filings — to provide complete financial context. Follow each step in order. If any step fails, log the error and resolution in `context/tasks/self-correction.md` before continuing.
