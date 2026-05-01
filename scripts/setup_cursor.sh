@@ -2,27 +2,23 @@
 # ------------------------------------------------------------------
 # setup_cursor.sh
 #
-# Sets up symlinks so that Cursor IDE can automatically read the
-# resources content as if it lived inside .cursor/.
+# Sets up symlinks so Cursor IDE auto-discovers this repo's content.
 #
 # What it does:
 #   1. Creates a .cursor/ directory at the repo root (if absent).
-#   2. Symlinks resources/rules/* into .cursor/rules/ (flat)
+#   2. Symlinks resources/rules/* into .cursor/rules/ (flattened)
 #      so Cursor applies .mdc guardrails automatically.
 #      Optionally filtered by category via --rules.
-#   3. Symlinks resources/agents/ into .cursor/agents/
-#      so agents are discoverable via @mention.
-#   4. Symlinks resources/skills/ into .cursor/skills/
-#      so skills are discoverable via @mention.
+#   3. Symlinks the top-level agents/ directory into .cursor/agents/
+#      so role agents are discoverable via @mention.
+#   4. Symlinks the top-level skills/ directory into .cursor/skills/
+#      so role + process skills are discoverable via @mention.
+#   5. Symlinks the top-level commands/ directory into .cursor/commands/
+#      so /brainstorm, /write-plan, /execute-plan, /ship are available.
 #
 # Usage:
-#   cd <repo-root>
-#
-#   # Load all rule categories (default)
-#   bash scripts/setup_cursor.sh
-#
-#   # Load only specific rule categories (comma-separated)
-#   bash scripts/setup_cursor.sh --rules code_quality,security
+#   bash scripts/setup_cursor.sh                                # all rules
+#   bash scripts/setup_cursor.sh --rules code_quality,security  # subset
 #
 # Available rule categories:
 #   code_quality, evaluation, llm_standards, security
@@ -45,9 +41,9 @@ echo "Setting up Cursor IDE integration..."
 
 mkdir -p "$CURSOR_DIR/rules"
 
-# Flatten .mdc files from categorized subfolders into .cursor/rules/
-# Respects --rules filter if provided; otherwise links all categories.
+# Flatten .mdc files from categorized subfolders into .cursor/rules/.
 for category_dir in "$REPO_ROOT"/resources/rules/*/; do
+    [ -d "$category_dir" ] || continue
     category=$(basename "$category_dir")
     if [[ -n "$RULE_FILTER" ]] && [[ ",$RULE_FILTER," != *",$category,"* ]]; then
         echo "  Skipping category: $category"
@@ -60,22 +56,27 @@ for category_dir in "$REPO_ROOT"/resources/rules/*/; do
     done
 done
 
-# Symlink agents directory
-if [ -L "$CURSOR_DIR/agents" ] || [ ! -e "$CURSOR_DIR/agents" ]; then
-    ln -sfn "$REPO_ROOT/resources/agents" "$CURSOR_DIR/agents"
-    echo "  Linked agents directory"
-else
-    echo "  WARNING: .cursor/agents/ already exists and is not a symlink. Skipping."
-fi
+link_dir() {
+    local name="$1"
+    local target="$REPO_ROOT/$name"
+    local link="$CURSOR_DIR/$name"
+    if [ ! -d "$target" ]; then
+        echo "  Skipping: $name/ does not exist at repo root"
+        return
+    fi
+    if [ -L "$link" ] || [ ! -e "$link" ]; then
+        ln -sfn "$target" "$link"
+        echo "  Linked $name/"
+    else
+        echo "  WARNING: .cursor/$name/ already exists and is not a symlink. Skipping."
+    fi
+}
 
-# Symlink skills directory
-if [ -L "$CURSOR_DIR/skills" ] || [ ! -e "$CURSOR_DIR/skills" ]; then
-    ln -sfn "$REPO_ROOT/resources/skills" "$CURSOR_DIR/skills"
-    echo "  Linked skills directory"
-else
-    echo "  WARNING: .cursor/skills/ already exists and is not a symlink. Skipping."
-fi
+link_dir "agents"
+link_dir "skills"
+link_dir "commands"
 
 echo ""
-echo "Done! Cursor will now automatically apply rules, and you can"
-echo "@mention agents and skills from resources/ in Cursor Chat."
+echo "Done. Cursor will now apply rules automatically and you can"
+echo "@mention agents/, skills/, and use /brainstorm, /write-plan,"
+echo "/execute-plan, /ship from commands/ in Cursor Chat."
