@@ -1,3 +1,8 @@
+---
+name: migrations
+description: Use when adding, modifying, or removing tables, columns, or indexes. Covers Alembic and Prisma migration authoring, zero-downtime patterns, and data backfills.
+---
+
 # Database Migrations
 
 **Domain:** Database

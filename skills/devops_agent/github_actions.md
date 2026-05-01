@@ -1,3 +1,8 @@
+---
+name: github-actions
+description: Use when writing or modifying GitHub Actions workflows. Covers job dependencies, secrets, matrix builds, environment protection rules, and pipeline optimization.
+---
+
 # GitHub Actions
 
 **Domain:** DevOps

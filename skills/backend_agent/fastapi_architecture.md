@@ -1,3 +1,8 @@
+---
+name: fastapi-architecture
+description: Use when building or modifying FastAPI applications. Covers endpoint design, dependency injection, middleware, Pydantic v2 schemas, and background tasks.
+---
+
 # FastAPI Architecture
 
 **Domain:** Backend

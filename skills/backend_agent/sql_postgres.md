@@ -1,3 +1,8 @@
+---
+name: sql-postgres
+description: Use when writing or optimizing SQL queries against PostgreSQL. Covers async drivers, table/index creation, migrations, and query plan debugging.
+---
+
 # SQL & Postgres
 
 **Domain:** Backend

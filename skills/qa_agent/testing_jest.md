@@ -1,3 +1,8 @@
+---
+name: testing-jest
+description: Use when writing or configuring tests for Node.js/TypeScript services. Covers unit/integration tests, Supertest HTTP tests, coverage thresholds, mocks, and DB teardown.
+---
+
 # Testing — Jest
 
 **Domain:** QA

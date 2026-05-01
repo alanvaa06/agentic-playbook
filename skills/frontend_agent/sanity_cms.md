@@ -1,3 +1,8 @@
+---
+name: sanity-cms
+description: Use when fetching or rendering Sanity-managed content. Covers GROQ queries, Studio schema authoring, Portable Text rendering, and Sanity image optimization.
+---
+
 # Sanity CMS
 
 **Domain:** Frontend

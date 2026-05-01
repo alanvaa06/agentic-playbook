@@ -1,3 +1,8 @@
+---
+name: testing-pytest
+description: Use when writing or extending tests for Python services. Covers pytest fixtures, factories, database isolation, async test setup, and flaky test diagnosis.
+---
+
 # Testing — pytest
 
 **Domain:** QA

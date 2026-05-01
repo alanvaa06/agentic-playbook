@@ -1,3 +1,8 @@
+---
+name: sast
+description: Use when scanning source code for security vulnerabilities. Covers semgrep OWASP Top 10 rules, injection/XSS/prototype-pollution detection in Python and TypeScript/JavaScript.
+---
+
 # Static Application Security Testing (SAST)
 
 **Domain:** Security

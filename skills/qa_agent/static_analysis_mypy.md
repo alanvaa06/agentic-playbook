@@ -1,3 +1,8 @@
+---
+name: static-analysis-mypy
+description: Use when adding or enforcing Python type annotations. Covers mypy configuration, common error fixes, strict mode adoption, and CI/pre-commit integration.
+---
+
 # Static Analysis — mypy
 
 **Domain:** QA

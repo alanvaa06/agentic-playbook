@@ -1,4 +1,4 @@
-﻿---
+---
 
 name: vision-api-syntax
 

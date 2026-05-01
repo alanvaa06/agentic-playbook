@@ -1,3 +1,8 @@
+---
+name: prompt-chaining
+description: Use when a task requires sequential LLM steps with structured intermediate outputs. Covers chain design, quality gates between steps, and when to use chaining vs. parallel subagents.
+---
+
 # Prompt Chaining
 
 **Domain:** Prompt Engineering

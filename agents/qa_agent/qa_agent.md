@@ -271,6 +271,19 @@ Systematically scan for these categories of defect:
 
 ---
 
+## Process Gates
+
+This agent operates inside the lifecycle defined in
+[docs/process/SKILL_INDEX.md](../../docs/process/SKILL_INDEX.md) and
+[AGENTS.md §10](../../AGENTS.md).
+
+**Phases ridden:** 6, 8
+
+Lifecycle order is enforced by AGENTS.md, not by this file. This stanza is
+informational — it tells humans which gates this role most often participates in.
+
+---
+
 ## 8. Output Format
 
 Structure every response using the format matching the active mode:

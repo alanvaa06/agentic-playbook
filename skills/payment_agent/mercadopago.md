@@ -1,3 +1,8 @@
+---
+name: mercadopago
+description: Use when integrating MercadoPago payments. Covers Checkout API, IPN webhook handlers, pending payment debugging, and refund issuance via the MercadoPago Refunds API.
+---
+
 # MercadoPago Payments
 
 **Domain:** Payments

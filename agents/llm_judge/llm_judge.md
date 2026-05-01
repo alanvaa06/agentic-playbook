@@ -144,3 +144,16 @@ If the user types `/force_approve`, bypass the current evaluation and mark the s
 ## Self-Correction Mandate
 
 If you discover during evaluation that a skill file under `skills/` contains outdated patterns or incorrect information (e.g., a deprecated API call that the skill still recommends), **immediately** append an entry to `context/tasks/self-correction.md` identifying the stale skill content so it can be updated.
+
+---
+
+## Process Gates
+
+This agent operates inside the lifecycle defined in
+[docs/process/SKILL_INDEX.md](../../docs/process/SKILL_INDEX.md) and
+[AGENTS.md §10](../../AGENTS.md).
+
+**Phases ridden:** 9 (consumes `requesting-code-review` output)
+
+Lifecycle order is enforced by AGENTS.md, not by this file. This stanza is
+informational — it tells humans which gates this role most often participates in.

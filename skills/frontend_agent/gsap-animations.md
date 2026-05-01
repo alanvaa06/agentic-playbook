@@ -1,3 +1,8 @@
+---
+name: gsap-animations
+description: Use when building complex scroll-driven or timeline-based animations. Covers GSAP ScrollTrigger, pinned sections, odometer effects, and multi-step scrubbing timelines.
+---
+
 # GSAP Animations
 
 **Domain:** Frontend

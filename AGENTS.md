@@ -89,3 +89,26 @@ This document governs how the agent thinks, plans, executes, and corrects itself
 3. **Correctness over speed** — A slower, correct solution beats a fast, broken one.
 4. **Minimal blast radius** — Change only what needs to change. Avoid large refactors unless explicitly requested.
 5. **Security hygiene** — Never commit secrets, API keys, or credentials. Use environment variables and `.env` files (which must be git-ignored).
+
+## 10. Process Gates
+
+Every non-trivial task flows through the 10-phase lifecycle defined in
+[docs/process/SKILL_INDEX.md](docs/process/SKILL_INDEX.md):
+
+1. **Define problem** — `skills/shared/process/brainstorming/SKILL.md`
+2. **Blueprint** — continues brainstorming with the architect agent
+3. **Plan** — `skills/shared/process/writing-plans/SKILL.md`
+4. **Isolate workspace** — `skills/shared/process/using-git-worktrees/SKILL.md`
+5. **Execute** — `skills/shared/process/subagent-driven-development/SKILL.md` or `executing-plans`
+6. **Test discipline** — `skills/shared/process/test-driven-development/SKILL.md`
+7. **Debug** — `skills/shared/process/systematic-debugging/SKILL.md`
+8. **Verify** — `skills/shared/process/verification-before-completion/SKILL.md` (mirrors §4)
+9. **Review** — `requesting-code-review` → `receiving-code-review`
+10. **Ship** — `skills/shared/process/finishing-a-development-branch/SKILL.md`
+
+Skip a phase only when the task is genuinely trivial (single-file, < 5 lines —
+same threshold as §1). When in doubt, run the gate.
+
+For parallel work, see `skills/shared/process/dispatching-parallel-agents/SKILL.md`.
+For an introduction to the process skill system, read
+`skills/shared/process/using-process-skills/SKILL.md` at session start.

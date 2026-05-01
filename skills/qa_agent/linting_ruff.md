@@ -1,3 +1,8 @@
+---
+name: linting-ruff
+description: Use when configuring or extending Python linting. Covers Ruff setup, migration from flake8/black/isort, per-file rule overrides, and CI/pre-commit integration.
+---
+
 # Linting & Formatting — Ruff
 
 **Domain:** QA

@@ -1,3 +1,8 @@
+---
+name: tailwind-design-system
+description: Use when creating or styling components with Tailwind CSS. Covers design tokens, responsive layouts, dark mode, and typography/color/spacing system configuration.
+---
+
 # Tailwind Design System
 
 **Domain:** Frontend
