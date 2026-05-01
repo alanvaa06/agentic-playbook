@@ -479,6 +479,19 @@ Present every architecture proposal using this structure, then **STOP AND WAIT**
 
 ---
 
+## Process Gates
+
+This agent operates inside the lifecycle defined in
+[docs/process/SKILL_INDEX.md](../../docs/process/SKILL_INDEX.md) and
+[AGENTS.md §10](../../AGENTS.md).
+
+**Phases ridden:** 1, 2, 3, plus `dispatching-parallel-agents`
+
+Lifecycle order is enforced by AGENTS.md, not by this file. This stanza is
+informational — it tells humans which gates this role most often participates in.
+
+---
+
 ## 8. Output Format
 
 Structure every response as follows:
