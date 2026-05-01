@@ -1,17 +1,18 @@
 # ------------------------------------------------------------------
 # setup_cursor.ps1
 #
-# Sets up symlinks so that Cursor IDE can automatically read the
-# resources content as if it lived inside .cursor/.
+# Sets up symlinks so Cursor IDE auto-discovers this repo's content.
 #
 # What it does:
 #   1. Creates a .cursor/ directory at the repo root (if absent).
-#   2. Symlinks resources/rules/* into .cursor/rules/ (flat)
+#   2. Symlinks resources/rules/* into .cursor/rules/ (flattened)
 #      so Cursor applies .mdc guardrails automatically.
-#   3. Symlinks resources/agents/ into .cursor/agents/
-#      so agents are discoverable via @mention.
-#   4. Symlinks resources/skills/ into .cursor/skills/
-#      so skills are discoverable via @mention.
+#   3. Symlinks the top-level agents/ directory into .cursor/agents/
+#      so role agents are discoverable via @mention.
+#   4. Symlinks the top-level skills/ directory into .cursor/skills/
+#      so role + process skills are discoverable via @mention.
+#   5. Symlinks the top-level commands/ directory into .cursor/commands/
+#      so /brainstorm, /write-plan, /execute-plan, /ship are available.
 #
 # Usage (run from repo root):
 #   powershell -ExecutionPolicy Bypass -File scripts\setup_cursor.ps1
@@ -37,7 +38,7 @@ if (-not (Test-Path $RulesDir)) {
 }
 
 # Flatten all .mdc files from categorized subfolders into .cursor/rules/
-$mdcFiles = Get-ChildItem -Recurse -Path (Join-Path $RepoRoot "resources\rules") -Filter "*.mdc"
+$mdcFiles = Get-ChildItem -Recurse -Path (Join-Path $RepoRoot "resources\rules") -Filter "*.mdc" -ErrorAction SilentlyContinue
 foreach ($file in $mdcFiles) {
     $linkPath = Join-Path $RulesDir $file.Name
     if (Test-Path $linkPath) {
@@ -47,24 +48,26 @@ foreach ($file in $mdcFiles) {
     Write-Host "  Linked rule: $($file.Name)"
 }
 
-# Symlink agents directory
-$agentsLink = Join-Path $CursorDir "agents"
-$agentsTarget = Join-Path $RepoRoot "resources\agents"
-if (Test-Path $agentsLink) {
-    Remove-Item $agentsLink -Force -Recurse
+function Link-Dir {
+    param([string]$Name)
+    $target = Join-Path $RepoRoot $Name
+    $link   = Join-Path $CursorDir $Name
+    if (-not (Test-Path $target)) {
+        Write-Host "  Skipping: $Name/ does not exist at repo root"
+        return
+    }
+    if (Test-Path $link) {
+        Remove-Item $link -Force -Recurse
+    }
+    New-Item -ItemType SymbolicLink -Path $link -Target $target | Out-Null
+    Write-Host "  Linked $Name/"
 }
-New-Item -ItemType SymbolicLink -Path $agentsLink -Target $agentsTarget | Out-Null
-Write-Host "  Linked agents directory"
 
-# Symlink skills directory
-$skillsLink = Join-Path $CursorDir "skills"
-$skillsTarget = Join-Path $RepoRoot "resources\skills"
-if (Test-Path $skillsLink) {
-    Remove-Item $skillsLink -Force -Recurse
-}
-New-Item -ItemType SymbolicLink -Path $skillsLink -Target $skillsTarget | Out-Null
-Write-Host "  Linked skills directory"
+Link-Dir "agents"
+Link-Dir "skills"
+Link-Dir "commands"
 
 Write-Host ""
-Write-Host "Done! Cursor will now automatically apply rules, and you can"
-Write-Host "@mention agents and skills from resources/ in Cursor Chat."
+Write-Host "Done. Cursor will now apply rules automatically and you can"
+Write-Host "@mention agents/, skills/, and use /brainstorm, /write-plan,"
+Write-Host "/execute-plan, /ship from commands/ in Cursor Chat."
