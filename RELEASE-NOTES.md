@@ -7,7 +7,7 @@ First plugin-distributable release.
 ### Added
 
 - Process skills under `skills/shared/process/` (13 skills) — vendored and adapted from
-  [obra/superpowers](https://github.com/obra/superpowers) commit `e7a2d164`.
+  [obra/superpowers](https://github.com/obra/superpowers) commit `e7a2d16476bf042e9add4699c9d018a90f86e4a6`.
 - `AGENTS.md §10 Process Gates` lifecycle.
 - `docs/process/SKILL_INDEX.md` phase ↔ skill mapping.
 - `docs/process/USAGE.md` manual invocation guide.

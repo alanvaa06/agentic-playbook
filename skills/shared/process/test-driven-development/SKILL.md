@@ -326,7 +326,7 @@ Extract validation for multiple fields if needed.
 
 ## Testing Anti-Patterns
 
-When adding mocks or test utilities, read [skills/shared/process/testing-anti-patterns/SKILL.md] to avoid common pitfalls:
+When adding mocks or test utilities, read [testing-anti-patterns.md](./testing-anti-patterns.md) to avoid common pitfalls:
 - Testing mock behavior instead of real behavior
 - Adding test-only methods to production classes
 - Mocking without understanding dependencies
