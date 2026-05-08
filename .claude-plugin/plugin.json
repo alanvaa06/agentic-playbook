@@ -1,7 +1,7 @@
 {
   "name": "agentic-playbook",
   "description": "Role-based agent skills + embedded process discipline (brainstorm, plan, TDD, verify, review, ship). Adapted from obra/superpowers.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": {
     "name": "alanvaa06",
     "email": "alanvaa.06@gmail.com"

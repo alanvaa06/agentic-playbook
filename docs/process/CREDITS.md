@@ -4,20 +4,21 @@ The process skills under `skills/shared/process/` are adapted from
 [obra/superpowers](https://github.com/obra/superpowers) by Jesse Vincent
 (MIT License).
 
-**Upstream snapshot:** commit `e7a2d16476bf042e9add4699c9d018a90f86e4a6`
-**Snapshot date:** 2026-05-01
+**Upstream snapshot:** commit `f2cbfbefebbfef77321e4c9abc9e949826bea9d7`
+**Snapshot date:** 2026-05-08
 **License:** MIT — see https://github.com/obra/superpowers/blob/main/LICENSE
 
 ## Adaptations
 
 - Frontmatter rewritten to match agentic-playbook conventions
 - File-path references rewritten (`docs/superpowers/` → `docs/process/`,
-  plans → `context/tasks/plans/`)
+  plans → `docs/process/plans/`)
 - Cross-references rewritten to playbook skill paths
 - Self-correction hook added (`context/tasks/self-correction.md`, see AGENTS.md §3)
 - `using-superpowers` renamed to `using-process-skills`
 - `writing-skills` skill not vendored (playbook has its own
   `docs/skill-template.md` + `docs/CONTRIBUTING.md`)
+- Global worktree path uses `~/.config/worktrees/` (playbook convention)
 
 ## Original MIT License
 
@@ -31,7 +32,7 @@ of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+provided to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
