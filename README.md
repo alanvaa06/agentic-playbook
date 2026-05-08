@@ -31,7 +31,7 @@ Browse `agents/` for role definitions, `skills/` for skill sets, `resources/rule
 /plugin install agentic-playbook
 ```
 
-Registers all role agents, every skill, and the `/brainstorm` `/write-plan` `/execute-plan` `/ship` slash commands. (Marketplace listing is in flight — see [RELEASE-NOTES.md](RELEASE-NOTES.md).)
+Registers all role agents, every skill, and the `/brainstorm` `/write-plan` `/execute-plan` `/ship` slash commands.
 
 ### C. Cursor symlink integration
 

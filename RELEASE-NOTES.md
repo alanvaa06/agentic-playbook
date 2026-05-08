@@ -21,4 +21,4 @@ First plugin-distributable release.
 
 - Repo remains usable via `git clone` without installing the plugin.
 - Plugin install adds auto-trigger and the 4 slash commands above.
-- Marketplace registration (own marketplace repo + listing) is a follow-up task.
+- Marketplace listing available at [github.com/alanvaa06/agentic-playbook-marketplace](https://github.com/alanvaa06/agentic-playbook-marketplace) — install with `/plugin marketplace add alanvaa06/agentic-playbook-marketplace` then `/plugin install agentic-playbook`.
